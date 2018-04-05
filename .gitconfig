@@ -1,0 +1,21 @@
+[core]
+  excludesfile = ~/.gitignore-global
+  editor = vim
+
+[color]
+  ui = auto
+
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+
+[include]
+  path = ~/.gitconfig.local
+
+[includeIf "gitdir:~/repos/**"]
+  path = ~/.gitconfig.work
+
+[alias]
+  ls = log --pretty=format:'%C(yellow)%h%C(bold yellow)%d - %C(reset)%s%C(reset) - %C(blue)[%an] %C(green)(%cr)%C(reset)' --decorate
+  ll = log --pretty=format:'%C(yellow)%h%C(bold yellow)%d%C(reset) - %s%C(reset) - %C(blue)[%an] %C(green)(%ad)%C(reset)' --decorate --numstat
+  hist = log --pretty=format:'%C(yellow)%h%C(bold yellow)%d%C(reset) - %s%C(reset) - %C(blue)[%an] %C(green)(%ad)%C(reset)' --abbrev-commit --graph --color --full-history --date-order --date=default
