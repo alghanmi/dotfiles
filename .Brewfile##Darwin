@@ -1,0 +1,107 @@
+tap "caskroom/cask"
+tap "Homebrew/bundle"
+tap "caskroom/fonts"
+brew "mas"
+
+# Shell essentials
+brew "zsh"
+brew "antigen"
+brew "yadm"
+brew "git"
+brew "subversion"
+brew "mercurial"
+brew "coreutils"
+brew "bash-completion"
+brew "ssh-copy-id"
+brew "wget"
+brew "tree"
+brew "watch"
+brew "gnupg2", args: ["without-libusb"]
+brew "gpg-agent"
+brew "tmux"
+brew "reattach-to-user-namespace"
+brew "cmake", args: ["with-completion"]
+brew "curl"
+brew "coreutils"
+
+# Tools
+brew "nmap"
+brew "tcptraceroute"
+brew "pwgen"
+brew "unrar"
+brew "md5sha1sum"
+brew "htop"
+
+# Editors
+brew "vim", args: ["with-override-system-vi", "with-python3"]
+cask "textmate"
+cask "macdown"
+cask "atom"
+
+# System Essentials
+cask "xquartz"
+cask "iterm2"
+cask "spectacle"
+cask "docker"
+
+# Desktop Apps
+cask "firefox"
+cask "google-chrome"
+
+# Dev Tools
+cask "java"
+brew "ant"
+brew "maven"
+brew "gcc"
+brew "llvm"
+brew "python"
+brew "python3"
+brew "brew-pip"
+brew "ruby"
+brew "brew-gem"
+brew "node"
+brew "jq"
+brew "go", args: ["cross-compile-all"]
+brew "doxygen"
+brew "boost"
+brew "git-lfs"
+cask "p4v"
+
+# Infra Tools
+brew "awscli"
+brew "terraform"
+brew "kubernetes-cli"
+brew "ansible"
+
+# YubiKey
+brew "yubikey-personalization"
+brew "ykman"
+brew "pinentry-mac"
+
+# Dependencies for Apps
+brew "phantomjs"
+brew "asciinema"
+brew "fzf"
+
+# Virtualization
+cask "virtualbox"
+cask "vagrant"
+
+# Fonts
+cask "font-inconsolata-dz-for-powerline"
+
+# Media
+brew "mpv"
+brew "youtube-dl"
+brew "ffmpeg", args: ["with-libssh", "with-openssl"]
+brew "libav"
+brew "flac", args: ["with-libogg"]
+
+#AppStore Applications
+mas "Evernote", id: 406056744
+mas "Microsoft Remote Desktop", id: 715768417
+mas "Slack", id: 803453959
+mas "Todoist", id: 585829637
+mas "WhatsApp Desktop", id: 1147396723 
+mas "Xcode", id: 497799835
+mas "YubiKey Personalization Tool", id: 638161122
