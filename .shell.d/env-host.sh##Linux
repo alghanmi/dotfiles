@@ -1,0 +1,12 @@
+# Path
+export PATH=$PATH:/sbin
+
+
+# ZSH Antigen Configuration
+export ZSH_ANTIGEN_HOME=/usr/share/zsh-antigen
+export ADOTDIR=$HOME/.antigen
+export ANTIGEN_LOG=$ADOTDIR/antigen.log
+
+# FZF Configuration
+export FZF_HOME=$HOME/tools/fzf
+export PATH=$PATH:$FZF_HOME/bin

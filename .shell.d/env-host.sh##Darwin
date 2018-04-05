@@ -1,0 +1,7 @@
+# ZSH Antigen Configuration
+export ZSH_ANTIGEN_HOME=/usr/local/share/antigen
+export ADOTDIR=$HOME/.antigen
+export ANTIGEN_LOG=$ADOTDIR/antigen.log
+
+# FZF Configuration
+export FZF_HOME=$(brew --prefix fzf)
