@@ -1,0 +1,20 @@
+"*":
+  "atom-ide-ui":
+    use: {}
+  core:
+    audioBeep: false
+    closeDeletedFileTabs: true
+    disabledPackages: [
+      "linter"
+      "metrics"
+      "exception-reporting"
+    ]
+    telemetryConsent: "no"
+  editor:
+    fontFamily: "Default: Inconsolata-dz"
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+    tabType: "soft"
+  welcome:
+    showOnStartup: false
