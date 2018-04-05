@@ -1,0 +1,85 @@
+#!/bin/bash
+cd "$HOME"
+
+system_type=$(uname -s)
+
+# Bootstrap MacOS
+if [ "$system_type" = "Darwin" ]; then
+  # Install homebrew if it's missing
+  if ! command -v brew >/dev/null 2>&1; then
+    echo "Installing homebrew"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  if [ -f "$HOME/.Brewfile" ]; then
+    echo "Updating homebrew bundle"
+    brew update
+    brew doctor && brew bundle --global
+  fi
+  if [ -f "$HOME/.pip-packages" ]; then
+    echo "Install python packages"
+    pip install --upgrade --requirement "$HOME/.pip-packages"
+  fi
+fi
+
+# Create user bin directory
+mkdir -p "$HOME/.bin"
+
+# Create SSH configuration directory
+mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
+chmod 700 "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
+
+# Upgrade antigen plugins if needed
+if [ -d "$HOME/.antigen" ]; then
+  echo "Upgrading Antigen plugins"
+  zsh -c 'source $HOME/.zshrc && antigen update'
+fi
+
+# Bootstrap vim
+if command -v vim >/dev/null 2>&1; then
+  # Download the latest vim-plug
+  curl --fail --location --create-dirs --silent --output $HOME/.vim/autoload/plug.vim \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  # Install all plugins
+  echo "Bootstraping Vim"
+  vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+fi
+
+# Bootstrap tmux
+if command -v tmux >/dev/null 2>&1; then
+  echo "Bootstrapping tmux"
+  if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    # installing tmux-plugin-manager and plugins
+    mkdir "$HOME/.tmux/plugins"
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    "$HOME"/.tmux/plugins/tpm/bindings/install_plugins
+    "$HOME"/.tmux/plugins/tpm/bindings/update_plugins
+  else
+    # updating tpm and plugins
+    cd "$HOME/.tmux/plugins/tpm"
+    git pull
+    cd "$HOME"
+  fi
+fi
+
+# Bootstrap atom
+if command -v apm >/dev/null 2>&1; then
+  # Install atom plugins
+  apm install --packages-file "$HOME/.atom-packages"
+fi
+
+# Bootstrap Go
+if [ ! -d "$HOME/go" ]; then
+  mkdir $HOME/go
+fi
+
+# Bootstrap Terraform
+if [ ! -d "$HOME/.terraform.d" ]; then
+  mkdir "$HOME/.terraform.d"
+  chmod 755 "$HOME/.terraform.d"
+fi
+if [ ! -d "$HOME/.terraform.d/plugin-cache" ]; then
+  mkdir "$HOME/.terraform.d/plugin-cache"
+  chmod 755 "$HOME/.terraform.d/plugin-cache"
+fi
