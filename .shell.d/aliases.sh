@@ -1,3 +1,6 @@
+# Personal/Private YADM Repository
+alias pyadm='yadm --yadm-dir ~/.yadm-personal'
+
 # Standard Aliases
 if [ "$(uname -s)" = "Darwin" ]; then
   # ls colored
