@@ -53,7 +53,6 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle zsh-users/zsh-syntax-highlighting # load before zsh-history-substring-search
   antigen bundle zsh-users/zsh-history-substring-search
   antigen bundle zsh-users/zsh-autosuggestions
-  antigen bundle robbyrussell/oh-my-zsh plugins/zsh-completions
 
   # Bundles
   antigen bundle robbyrussell/oh-my-zsh plugins/git
