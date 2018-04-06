@@ -6,7 +6,7 @@ done
 # ZSH Options
 setopt autocd
 setopt correct_all
-setopt extendedglob
+setopt extended_glob
 setopt interactive_comments
 setopt pushd_ignore_dups
 
@@ -49,10 +49,13 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   # Load the oh-my-zsh's library.
   antigen use oh-my-zsh
 
-  # Zsh completion
+  # Zsh completion and highlighting
   antigen bundle zsh-users/zsh-syntax-highlighting # load before zsh-history-substring-search
   antigen bundle zsh-users/zsh-history-substring-search
   antigen bundle zsh-users/zsh-autosuggestions
+  antigen bundle zsh-users/zsh-completions
+  antigen bundle robbyrussell/oh-my-zsh plugins/command-not-found
+  zstyle ':completion:*' menu select # Add graphical menu for zsh-completions
 
   # Bundles
   antigen bundle robbyrussell/oh-my-zsh plugins/git
@@ -60,9 +63,6 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle robbyrussell/oh-my-zsh plugins/pip
   antigen bundle robbyrussell/oh-my-zsh plugins/python
   antigen bundle robbyrussell/oh-my-zsh plugins/virtualenv
-
-  antigen bundle robbyrussell/oh-my-zsh plugins/command-not-found
-  antigen bundle zsh-users/zsh-completions
 
   antigen bundle robbyrussell/oh-my-zsh plugins/terraform
   antigen bundle robbyrussell/oh-my-zsh plugins/vault
