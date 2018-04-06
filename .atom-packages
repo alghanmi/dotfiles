@@ -16,6 +16,8 @@ pigments
 atom-jinja2
 language-ansible
 language-terraform
+language-tmux
+ssh-config
 
 change-case
 sort-lines
