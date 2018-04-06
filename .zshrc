@@ -1,5 +1,7 @@
-# Load personal config
-source ~/.shell.d/*.sh
+# Load shell config files
+for filename in $(find ~/.shell.d -name '*.sh'); do
+  source $filename
+done
 
 # ZSH Options
 setopt autocd
@@ -93,8 +95,8 @@ fi
 
 
 # Directory color support
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+if [ command -v dircolors >/dev/null 2>&1 ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)"
 fi
 
 autoload -U +X bashcompinit && bashcompinit
