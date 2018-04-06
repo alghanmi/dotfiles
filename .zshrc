@@ -15,6 +15,7 @@ HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE=${HISTFILE:-$HOME/.zsh_history}
 setopt appendhistory
+setopt inc_append_history
 setopt hist_expire_dups_first
 setopt hist_find_no_dups
 setopt hist_ignore_all_dups
@@ -99,4 +100,4 @@ if [ command -v dircolors >/dev/null 2>&1 ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)"
 fi
 
-autoload -U +X bashcompinit && bashcompinit
+autoload -U compinit && compinit
