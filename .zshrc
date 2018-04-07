@@ -9,6 +9,7 @@ setopt correct_all
 setopt extended_glob
 setopt interactive_comments
 setopt pushd_ignore_dups
+setopt clobber
 
 # ZSH History Options
 HISTSIZE=50000
