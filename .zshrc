@@ -81,13 +81,13 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle zlsun/solarized-man
 
   antigen bundle mafredri/zsh-async
-  antigen theme denysdovhan/spaceship-prompt spaceship
+  antigen bundle sindresorhus/pure
 
   # Apply changes
   antigen apply
-  export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 
   # Setup Solarized colors (run after `antigen apply`)
+  export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239'
   if [[ ! -f $HOME/.zsh-dircolors.config ]]; then
     setupsolarized dircolors.256dark
   fi
