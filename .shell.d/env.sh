@@ -8,6 +8,7 @@ export GIT_EDITOR=$EDITOR
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 export PAGER=less
+export LESS=-FRSX
 
 # Terraform
 #export TF_LOG=DEBUG
