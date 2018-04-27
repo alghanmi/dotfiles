@@ -91,7 +91,7 @@ cask "vagrant"
 cask "font-inconsolata-dz-for-powerline"
 
 # Media
-brew "mpv"
+cask "mpv"
 brew "youtube-dl"
 brew "ffmpeg", args: ["with-libssh", "with-openssl"]
 brew "libav"
