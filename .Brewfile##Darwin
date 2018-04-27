@@ -89,6 +89,7 @@ cask "vagrant"
 
 # Fonts
 cask "font-inconsolata-dz-for-powerline"
+cask "font-inconsolata-dz"
 
 # Media
 cask "mpv"
