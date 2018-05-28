@@ -5,3 +5,4 @@ powerline-status
 pyvirtualdisplay
 requests
 selenium==3.8.0
+virtualenv
