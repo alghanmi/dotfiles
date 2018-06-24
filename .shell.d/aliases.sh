@@ -28,7 +28,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # GPG Aliases
-alias gpg-reload='echo KILLAGENT | gpg-connect-agent && gpg-connect-agent /bye'
+alias gpg-reload='echo KILLAGENT | gpg-connect-agent && gpg-connect-agent /bye; gpgconf --kill gpg-agent'
 
 # Alias vi to vim
 alias vi='vim'
