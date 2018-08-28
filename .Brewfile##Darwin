@@ -35,13 +35,10 @@ brew "htop"
 # Editors
 brew "vim", args: ["with-override-system-vi", "with-python3"]
 cask "textmate"
-cask "macdown"
 cask "atom"
 
 # System Essentials
-cask "xquartz"
 cask "iterm2"
-cask "spectacle"
 cask "docker"
 
 # Desktop Apps
@@ -65,7 +62,6 @@ brew "go", args: ["cross-compile-all"]
 brew "doxygen"
 brew "boost"
 brew "git-lfs"
-cask "p4v"
 
 # Infra Tools
 brew "awscli"
@@ -79,7 +75,6 @@ brew "ykman"
 brew "pinentry-mac"
 
 # Dependencies for Apps
-brew "phantomjs"
 brew "asciinema"
 brew "fzf"
 
@@ -100,7 +95,6 @@ brew "flac", args: ["with-libogg"]
 
 #AppStore Applications
 mas "Evernote", id: 406056744
-mas "Microsoft Remote Desktop", id: 715768417
 mas "Slack", id: 803453959
 mas "Todoist", id: 585829637
 mas "WhatsApp Desktop", id: 1147396723 
