@@ -55,12 +55,10 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle zsh-users/zsh-history-substring-search
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-completions
-  antigen bundle robbyrussell/oh-my-zsh plugins/command-not-found
   zstyle ':completion:*' menu select # Add graphical menu for zsh-completions
 
   # Bundles
   antigen bundle robbyrussell/oh-my-zsh plugins/git
-  antigen bundle robbyrussell/oh-my-zsh paulirish/git-open
   antigen bundle robbyrussell/oh-my-zsh plugins/pip
   antigen bundle robbyrussell/oh-my-zsh plugins/python
   antigen bundle robbyrussell/oh-my-zsh plugins/virtualenv
