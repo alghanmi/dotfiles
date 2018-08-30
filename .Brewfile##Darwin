@@ -1,6 +1,7 @@
 tap "caskroom/cask"
 tap "Homebrew/bundle"
 tap "caskroom/fonts"
+tap "wata727/tflint" # for TFLint
 brew "mas"
 
 # Shell essentials
@@ -66,6 +67,7 @@ brew "git-lfs"
 # Infra Tools
 brew "awscli"
 brew "terraform"
+brew "tflint"
 brew "kubernetes-cli"
 brew "ansible"
 
