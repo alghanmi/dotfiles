@@ -30,6 +30,18 @@ if [ "$system_type" = "Darwin" ]; then
     defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.iterm2"
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
   fi
+
+  # FZF Configuration
+  #   I found that some evaluations take time and slow down the loading of zsh, therefore,
+  #   instead of evaluating in ~/.zshrc, I will do that during the bootstrap process.
+  #   This file will not be tracked by yadm, but re-generated with every bootstrap
+  export FZF_HOME=$(brew --prefix fzf)
+  $FZF_HOME/install --no-bash --no-fish --completion --key-bindings --no-update-rc
+
+  rm -f "$HOME/.shell.d/env-host-static.sh"
+  echo "# FZF Configuration" > "$HOME/.shell.d/env-host-static.sh"
+  echo "export FZF_HOME=$FZF_HOME" >> "$HOME/.shell.d/env-host-static.sh"
+  echo "[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh" >> "$HOME/.shell.d/env-host-static.sh"
 fi
 
 # Create SSH configuration directory
