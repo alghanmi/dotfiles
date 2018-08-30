@@ -19,4 +19,8 @@ This configuration uses `zsh` as the default shell. Most likely, your shell is n
 chsh -s $(which zsh)
 ```
 
-If you get an error like `chsh: /usr/local/bin/zsh: non-standard shell`, this means that you don't have `zsh` (or the instance you are attempting to use) in your `/etc/shells` file. So, make sure you append `/etc/shells` to include it.
+If you get an error like `chsh: /usr/local/bin/zsh: non-standard shell`, this means that you don't have `zsh` (or the instance you are attempting to use) in your `/etc/shells` file. So, make sure you append `/etc/shells` to include it. That can be done by running the following command:
+
+```sh
+echo "$(which zsh)" | sudo tee -a /etc/shells
+```
