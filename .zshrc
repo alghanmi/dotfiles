@@ -59,9 +59,11 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
 
   # Bundles
   antigen bundle robbyrussell/oh-my-zsh plugins/git
+  antigen bundle robbyrussell/oh-my-zsh plugins/golang
   antigen bundle robbyrussell/oh-my-zsh plugins/pip
   antigen bundle robbyrussell/oh-my-zsh plugins/python
   antigen bundle robbyrussell/oh-my-zsh plugins/virtualenv
+  antigen bundle robbyrussell/oh-my-zsh plugins/vscod
 
   antigen bundle robbyrussell/oh-my-zsh plugins/terraform
   antigen bundle robbyrussell/oh-my-zsh plugins/vault
