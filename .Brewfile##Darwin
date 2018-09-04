@@ -45,6 +45,7 @@ cask "docker"
 # Desktop Apps
 cask "firefox"
 cask "google-chrome"
+cask "dropbox"
 
 # Dev Tools
 cask "java"
