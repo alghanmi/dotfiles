@@ -98,6 +98,7 @@ fi
 # Bootstrap Go
 if [ ! -d "$HOME/go" ]; then
   mkdir $HOME/go
+  mkdir -p $HOME/go/bin $HOME/go/pkg $HOME/go/src
 fi
 
 # Bootstrap Terraform
