@@ -12,7 +12,7 @@
 [include]
   path = ~/.gitconfig.local
 
-[includeIf "gitdir:~/repos/**"]
+[includeIf "gitdir:~/ghe/**"]
   path = ~/.gitconfig.work
 
 [alias]
