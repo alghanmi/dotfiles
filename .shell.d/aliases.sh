@@ -13,6 +13,9 @@ if [ "$(uname -s)" = "Darwin" ]; then
 
   #dircolors
   alias dircolors='gdircolors'
+
+  # Check open ports
+  alias op='lsof -i | grep -E "(LISTEN|ESTABLISHED)"'
 else
   # ls colored
   alias ls='ls --color=auto'
@@ -48,6 +51,9 @@ alias awsroles='cat ~/.aws/credentials| grep "^\[" | sed "s/\[\(.*\)\]/\1/" | so
 
 # Mount remote fs `rmnt <remote> <local>`
 alias rmnt='sshfs -o uid=$(id -u) -o gid=$(id -g)'
+
+# Stop all SSH ControlMaster connections
+alias ssh-kill-cm='find ~/.ssh/sockets -type s -exec ssh ssh -o ControlPath={} -O stop \;'
 
 ## Functions (used as aliases)
 # SSH without using key
