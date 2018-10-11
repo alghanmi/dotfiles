@@ -9,7 +9,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
   alias lt='ls -Glht'
 
   # Package Management
-  alias update='brew update && brew upgrade --cleanup && brew cleanup && brew cask cleanup && brew prune && brew cask upgrade && brew doctor'
+  alias update='brew update && brew upgrade --cleanup && brew cleanup && brew prune && brew cask upgrade && brew doctor'
 
   #dircolors
   alias dircolors='gdircolors'
