@@ -106,6 +106,10 @@ if [ ! -d "$HOME/.terraform.d" ]; then
   mkdir "$HOME/.terraform.d"
   chmod 755 "$HOME/.terraform.d"
 fi
+if [ ! -d "$HOME/.terraform.d/plugins" ]; then
+  mkdir "$HOME/.terraform.d/plugins"
+  chmod 755 "$HOME/.terraform.d/plugins"
+fi
 if [ ! -d "$HOME/.terraform.d/plugin-cache" ]; then
   mkdir "$HOME/.terraform.d/plugin-cache"
   chmod 755 "$HOME/.terraform.d/plugin-cache"
