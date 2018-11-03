@@ -70,6 +70,7 @@ brew "awscli"
 brew "terraform"
 brew "tflint"
 brew "kubernetes-cli"
+brew "kubernetes-helm"
 brew "ansible"
 
 # YubiKey
