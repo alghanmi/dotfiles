@@ -30,7 +30,6 @@ brew "nmap"
 brew "tcptraceroute"
 brew "pwgen"
 brew "unrar"
-brew "md5sha1sum"
 brew "htop"
 
 # Editors
