@@ -2,6 +2,7 @@ tap "caskroom/cask"
 tap "Homebrew/bundle"
 tap "caskroom/fonts"
 tap "wata727/tflint" # for TFLint
+tap "wagoodman/dive" # for dive
 brew "mas"
 
 # Shell essentials
@@ -46,6 +47,8 @@ cask "docker"
 cask "firefox"
 cask "google-chrome"
 cask "dropbox"
+cask "boostnote"
+cask "handbrake"
 
 # Dev Tools
 cask "java"
@@ -64,6 +67,7 @@ brew "go", args: ["cross-compile-all"]
 brew "doxygen"
 brew "boost"
 brew "git-lfs"
+brew "dive"
 
 # Infra Tools
 brew "awscli"
@@ -72,10 +76,12 @@ brew "tflint"
 brew "kubernetes-cli"
 brew "kubernetes-helm"
 brew "ansible"
+brew "sshuttle"
 
 # YubiKey
 brew "yubikey-personalization"
 brew "ykman"
+brew "ykpers"
 brew "pinentry-mac"
 
 # Dependencies for Apps
@@ -84,6 +90,8 @@ brew "fzf"
 
 # Virtualization
 cask "vagrant"
+cask "virtualbox"
+cask "virtualbox-extension-pack"
 
 # Fonts
 cask "font-inconsolata-dz-for-powerline"
@@ -95,6 +103,7 @@ brew "youtube-dl"
 brew "ffmpeg", args: ["with-libssh", "with-openssl"]
 brew "libav"
 brew "flac", args: ["with-libogg"]
+cask "vlc"
 
 #AppStore Applications
 mas "Evernote", id: 406056744
