@@ -24,6 +24,7 @@ brew "reattach-to-user-namespace"
 brew "cmake", args: ["with-completion"]
 brew "curl"
 brew "coreutils"
+brew "ripgrep"
 
 # Tools
 brew "nmap"
