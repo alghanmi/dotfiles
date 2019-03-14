@@ -1,3 +1,7 @@
+# Homebrew Config
+export PATH=/usr/local/sbin:$PATH
+export HOMEBREW_INSTALL_CLEANUP=1
+
 # ZSH Antigen Configuration
 export ZSH_ANTIGEN_HOME=/usr/local/share/antigen
 export ADOTDIR=$HOME/.antigen
