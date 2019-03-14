@@ -1,88 +1,88 @@
-tap "caskroom/cask"
 tap "Homebrew/bundle"
+tap "caskroom/cask"
 tap "caskroom/fonts"
-tap "wata727/tflint" # for TFLint
 tap "wagoodman/dive" # for dive
+tap "wata727/tflint" # for TFLint
 brew "mas"
 
 # Shell essentials
-brew "zsh"
 brew "antigen"
-brew "yadm"
-brew "git"
-brew "subversion"
-brew "mercurial"
-brew "coreutils"
 brew "bash-completion"
+brew "cmake", args: ["with-completion"]
+brew "coreutils"
+brew "curl"
+brew "git"
+brew "gnupg2", args: ["without-libusb"]
+brew "mercurial"
+brew "reattach-to-user-namespace"
+brew "ripgrep"
 brew "ssh-copy-id"
-brew "wget"
+brew "subversion"
+brew "tmux"
 brew "tree"
 brew "watch"
-brew "gnupg2", args: ["without-libusb"]
-brew "tmux"
-brew "reattach-to-user-namespace"
-brew "cmake", args: ["with-completion"]
-brew "curl"
-brew "coreutils"
-brew "ripgrep"
+brew "wget"
+brew "yadm"
+brew "zsh"
 
 # Tools
-brew "nmap"
-brew "tcptraceroute"
-brew "pwgen"
-brew "unrar"
 brew "htop"
+brew "nmap"
+brew "pwgen"
+brew "tcptraceroute"
+brew "unrar"
 
 # Editors
 brew "vim", args: ["with-override-system-vi", "with-python3"]
-cask "textmate"
 cask "atom"
+cask "textmate"
 cask "visual-studio-code"
 
 # System Essentials
-cask "iterm2"
 cask "docker"
+cask "iterm2"
 
 # Desktop Apps
-cask "firefox"
-cask "google-chrome"
-cask "dropbox"
 cask "boostnote"
+cask "dropbox"
+cask "firefox"
+cask "gitter"
+cask "google-chrome"
 cask "handbrake"
 
 # Dev Tools
 cask "java"
 brew "ant"
-brew "maven"
+brew "boost"
+brew "brew-gem"
+brew "brew-pip"
+brew "dive"
+brew "doxygen"
 brew "gcc"
+brew "git-lfs"
+brew "go", args: ["cross-compile-all"]
+brew "jq"
 brew "llvm"
+brew "maven"
+brew "node"
 brew "python"
 brew "python3"
-brew "brew-pip"
 brew "ruby"
-brew "brew-gem"
-brew "node"
-brew "jq"
-brew "go", args: ["cross-compile-all"]
-brew "doxygen"
-brew "boost"
-brew "git-lfs"
-brew "dive"
 
 # Infra Tools
+brew "ansible"
 brew "awscli"
-brew "terraform"
-brew "tflint"
 brew "kubernetes-cli"
 brew "kubernetes-helm"
-brew "ansible"
 brew "sshuttle"
+brew "terraform"
+brew "tflint"
 
 # YubiKey
-brew "yubikey-personalization"
+brew "pinentry-mac"
 brew "ykman"
 brew "ykpers"
-brew "pinentry-mac"
+brew "yubikey-personalization"
 
 # Dependencies for Apps
 brew "asciinema"
@@ -94,15 +94,15 @@ cask "virtualbox"
 cask "virtualbox-extension-pack"
 
 # Fonts
-cask "font-inconsolata-dz-for-powerline"
 cask "font-inconsolata-dz"
+cask "font-inconsolata-dz-for-powerline"
 
 # Media
-cask "mpv"
-brew "youtube-dl"
 brew "ffmpeg", args: ["with-libssh", "with-openssl"]
-brew "libav"
 brew "flac", args: ["with-libogg"]
+brew "libav"
+brew "youtube-dl"
+cask "mpv"
 cask "vlc"
 
 #AppStore Applications
