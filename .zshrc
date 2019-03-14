@@ -5,23 +5,23 @@ done
 
 # ZSH Options
 setopt autocd
+setopt clobber
 setopt correct_all
 setopt extended_glob
 setopt interactive_comments
 setopt pushd_ignore_dups
-setopt clobber
 
 # ZSH History Options
 HISTSIZE=50000
 SAVEHIST=50000
 HISTFILE=${HISTFILE:-$HOME/.zsh_history}
 setopt appendhistory
-setopt inc_append_history
 setopt hist_expire_dups_first
 setopt hist_find_no_dups
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_save_no_dups
+setopt inc_append_history
 # Ignore interactive commands from history
 export HISTORY_IGNORE="(ls|bg|fg|pwd|exit|cd ..)"
 
@@ -65,10 +65,10 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle robbyrussell/oh-my-zsh plugins/virtualenv
   antigen bundle robbyrussell/oh-my-zsh plugins/vscod
 
-  antigen bundle robbyrussell/oh-my-zsh plugins/terraform
-  antigen bundle robbyrussell/oh-my-zsh plugins/vault
-  antigen bundle robbyrussell/oh-my-zsh plugins/vagrant
   antigen bundle robbyrussell/oh-my-zsh plugins/docker
+  antigen bundle robbyrussell/oh-my-zsh plugins/terraform
+  antigen bundle robbyrussell/oh-my-zsh plugins/vagrant
+  antigen bundle robbyrussell/oh-my-zsh plugins/vault
 
   antigen bundle rupa/z
   antigen bundle supercrabtree/k
