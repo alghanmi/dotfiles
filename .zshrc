@@ -32,7 +32,6 @@ bindkey -e vi
 # Set locale
 export LC_ALL=en_US.UTF-8
 
-
 # Refresh gpg-agent tty in case user switches into an X session
 export GPG_TTY=$(tty)
 eval "$(gpgconf --launch gpg-agent)"
@@ -56,13 +55,12 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle zsh-users/zsh-history-substring-search
   antigen bundle zsh-users/zsh-autosuggestions
   antigen bundle zsh-users/zsh-completions
-  zstyle ':completion:*' menu select # Add graphical menu for zsh-completions
 
   # Bundles
   antigen bundle robbyrussell/oh-my-zsh plugins/git
   antigen bundle robbyrussell/oh-my-zsh plugins/golang
-  antigen bundle robbyrussell/oh-my-zsh plugins/pip
   antigen bundle robbyrussell/oh-my-zsh plugins/python
+  antigen bundle robbyrussell/oh-my-zsh plugins/pip
   antigen bundle robbyrussell/oh-my-zsh plugins/virtualenv
   antigen bundle robbyrussell/oh-my-zsh plugins/vscod
 
@@ -79,7 +77,6 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   fi
 
   # Load theme and colors
-  antigen bundle joel-porquet/zsh-dircolors-solarized
   antigen bundle zlsun/solarized-man
 
   antigen bundle mafredri/zsh-async
@@ -90,15 +87,16 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
 
   # Setup Solarized colors (run after `antigen apply`)
   export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239'
-  if [[ ! -f $HOME/.zsh-dircolors.config ]]; then
-    setupsolarized dircolors.256dark
+  zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}" # Add graphical menu for zsh-completions
+
+  # Completion; use cache if updated within 24h
+  autoload -Uz compinit
+  if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
+    compinit -d $HOME/.zcompdump;
+  else
+    compinit -C;
   fi
+
+  # Compltion for aliases
+  compdef pyadm=yadm
 fi
-
-
-# Directory color support
-if [ command -v dircolors >/dev/null 2>&1 ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)"
-fi
-
-autoload -U compinit && compinit
