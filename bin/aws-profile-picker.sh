@@ -2,7 +2,7 @@
 
 # List credentials and regions of interest
 roles=($(cat ~/.aws/credentials | grep "^\[" | sed "s/\[\(.*\)\]/\1/" | sort))
-regions=(us-east-1 us-west-2 eu-central-1 eu-west-1)
+regions=(ca-central-1 us-east-1 us-west-2 eu-central-1 eu-west-1)
 
 function choose_from_list() {
   items=($@)
