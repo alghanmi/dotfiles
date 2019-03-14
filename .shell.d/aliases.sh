@@ -3,13 +3,21 @@ alias pyadm='yadm --yadm-dir ~/.yadm-personal'
 
 # Standard Aliases
 if [ "$(uname -s)" = "Darwin" ]; then
-  # ls colored
-  alias ls='ls -G'
-  alias ll='ls -Gl'
-  alias lt='ls -Glht'
+  if command -v gls >/dev/null 2>&1; then
+    # GNU ls (from coreutils)
+    alias ls='gls -F --color'
+    alias l='gls -lAh --color'
+    alias ll='gls -l --color'
+    alias la='gls -A --color'
+  else
+    # BSD ls colored
+    alias ls='ls -G'
+    alias ll='ls -Gl'
+    alias lt='ls -Glht'
+  fi
 
   # Package Management
-  alias update='brew update && brew upgrade --cleanup && brew cleanup && brew prune && brew cask upgrade && brew doctor'
+  alias update='brew update && brew upgrade && brew cask upgrade && brew doctor'
 
   #dircolors
   alias dircolors='gdircolors'
