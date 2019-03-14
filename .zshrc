@@ -6,6 +6,7 @@ done
 # ZSH Options
 setopt autocd
 setopt clobber
+setopt complete_aliases
 setopt correct_all
 setopt extended_glob
 setopt interactive_comments
