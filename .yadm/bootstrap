@@ -38,6 +38,7 @@ if [ "$system_type" = "Darwin" ]; then
   #   The following configuration is kept in this file:
   #      - FZF Configuration
   #      - dircolors
+  #      - grc
   rm -f "$HOME/.shell.d/env-host-static.sh"
 
   export FZF_HOME=$(brew --prefix fzf)
@@ -52,6 +53,12 @@ if [ "$system_type" = "Darwin" ]; then
   export GNU_DIRCOLORS_PATH="$(brew --prefix)/bin/gdircolors"
   echo "# dircolors" >> "$HOME/.shell.d/env-host-static.sh"
   echo "$(${GNU_DIRCOLORS_PATH} -b ${HOME}/.dircolors)" >> "$HOME/.shell.d/env-host-static.sh"
+
+  echo "" >> "$HOME/.shell.d/env-host-static.sh"
+  echo "" >> "$HOME/.shell.d/env-host-static.sh"
+
+  echo "# grc - generic colouriser for everything" >> "$HOME/.shell.d/env-host-static.sh"
+  echo "source $(brew --prefix)/etc/grc.zsh" >> "$HOME/.shell.d/env-host-static.sh"
 fi
 
 # Create SSH configuration directory
