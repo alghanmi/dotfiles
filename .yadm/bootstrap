@@ -97,13 +97,13 @@ if command -v tmux >/dev/null 2>&1; then
     # installing tmux-plugin-manager and plugins
     mkdir "$HOME/.tmux/plugins"
     git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-    "$HOME"/.tmux/plugins/tpm/bindings/install_plugins
-    "$HOME"/.tmux/plugins/tpm/bindings/update_plugins
+    "$HOME"/.tmux/plugins/tpm/bin/install_plugins
   else
     # updating tpm and plugins
     cd "$HOME/.tmux/plugins/tpm"
-    git pull
+    git pull -p
     cd "$HOME"
+    "$HOME"/.tmux/plugins/tpm/bin/update_plugins all
   fi
 fi
 
