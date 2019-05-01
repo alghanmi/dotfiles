@@ -12,7 +12,7 @@ brew "cmake", args: ["with-completion"]
 brew "coreutils"
 brew "curl"
 brew "git"
-brew "gnupg2", args: ["without-libusb"]
+brew "gnupg"
 brew "mercurial"
 brew "reattach-to-user-namespace"
 brew "ripgrep"
@@ -26,6 +26,7 @@ brew "yadm"
 brew "zsh"
 
 # Tools
+brew "grc"
 brew "htop"
 brew "nmap"
 brew "pwgen"
@@ -43,12 +44,14 @@ cask "docker"
 cask "iterm2"
 
 # Desktop Apps
-cask "boostnote"
+cask "balenaetcher"
+cask "bitwarden"
 cask "dropbox"
 cask "firefox"
 cask "gitter"
 cask "google-chrome"
 cask "handbrake"
+cask "notable"
 
 # Dev Tools
 cask "java"
@@ -87,6 +90,7 @@ brew "yubikey-personalization"
 # Dependencies for Apps
 brew "asciinema"
 brew "fzf"
+brew "graphviz"
 
 # Virtualization
 cask "vagrant"
@@ -105,10 +109,12 @@ brew "youtube-dl"
 cask "mpv"
 cask "vlc"
 
-#AppStore Applications
-mas "Evernote", id: 406056744
-mas "Slack", id: 803453959
-mas "Todoist", id: 585829637
-mas "WhatsApp Desktop", id: 1147396723 
-mas "Xcode", id: 497799835
-mas "YubiKey Personalization Tool", id: 638161122
+# AppStore Applications
+mas "com.apple.dt.Xcode", id: 497799835
+mas "com.evernote.Evernote", id: 406056744
+mas "com.lastpass.LastPass", id: 926036361
+mas "com.tinyspeck.slackmacgap", id: 803453959
+mas "com.todoist.mac.Todoist", id: 585829637
+mas "com.yubico.YKPersonalization", id: 638161122
+mas "desktop.WhatsApp", id: 1147396723
+mas "ru.keepcoder.Telegram", id: 747648890
