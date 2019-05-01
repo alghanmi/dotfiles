@@ -2,6 +2,7 @@ awscli
 boto3
 bs4
 powerline-status
+psutil
 pyvirtualdisplay
 requests
 virtualenv
