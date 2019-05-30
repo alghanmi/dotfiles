@@ -41,6 +41,9 @@ gpg-connect-agent updatestartuptty /bye >/dev/null
 unset SSH_AGENT_PID
 export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
+# Ruby Configuration
+eval "$(rbenv init -)"
+
 
 # Antigen Setup
 if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then

@@ -71,6 +71,7 @@ brew "node"
 brew "python"
 brew "python3"
 brew "ruby"
+brew "rbenv"
 
 # Infra Tools
 brew "ansible"
