@@ -1,5 +1,5 @@
 # Load shell config files
-for filename in $(find ~/.shell.d -name '*.sh'); do
+for filename in $(find ~/.shell.d -name '*.sh' | sort); do
   source $filename
 done
 

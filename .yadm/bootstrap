@@ -3,6 +3,12 @@ cd "$HOME"
 
 system_type=$(uname -s)
 
+# Static Environment Configuration
+#   I found that some evaluations take time and slow down the loading of zsh, therefore,
+#   instead of evaluating in ~/.zshrc, I will do that during the bootstrap process.
+host_env_static="$HOME/.shell.d/00-env-host-static.sh"
+rm -f "$host_env_static"
+
 # Bootstrap MacOS
 if [ "$system_type" = "Darwin" ]; then
   # Install homebrew if it's missing
@@ -31,48 +37,44 @@ if [ "$system_type" = "Darwin" ]; then
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
   fi
 
-  # Static Configuration - Brew
-  #   I found that some evaluations take time and slow down the loading of zsh, therefore,
-  #   instead of evaluating in ~/.zshrc, I will do that during the bootstrap process.
-  #   This file will not be tracked by yadm, but re-generated with every bootstrap.
-  #   The following configuration is kept in this file:
-  #      - FZF Configuration
-  #      - dircolors
-  #      - grc
-  rm -f "$HOME/.shell.d/env-host-static.sh"
-
+  # Static Environment Configuration - FZF
   export FZF_HOME=$(brew --prefix fzf)
   $FZF_HOME/install --no-bash --no-fish --completion --key-bindings --no-update-rc
-  echo "# FZF Configuration" > "$HOME/.shell.d/env-host-static.sh"
-  echo "export FZF_HOME=$FZF_HOME" >> "$HOME/.shell.d/env-host-static.sh"
-  echo "[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh" >> "$HOME/.shell.d/env-host-static.sh"
+  echo "# FZF Configuration" >> "$host_env_static"
+  echo "export FZF_HOME=$FZF_HOME" >> "$host_env_static"
+  echo "[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh" >> "$host_env_static"
 
-  echo "" >> "$HOME/.shell.d/env-host-static.sh"
-  echo "" >> "$HOME/.shell.d/env-host-static.sh"
+  echo "" >> "$host_env_static"
+  echo "" >> "$host_env_static"
 
+  # Static Environment Configuration - dircolors
   export GNU_DIRCOLORS_PATH="$(brew --prefix)/bin/gdircolors"
-  echo "# dircolors" >> "$HOME/.shell.d/env-host-static.sh"
-  echo "$(${GNU_DIRCOLORS_PATH} -b ${HOME}/.dircolors)" >> "$HOME/.shell.d/env-host-static.sh"
+  echo "# dircolors" >> "$host_env_static"
+  echo "$(${GNU_DIRCOLORS_PATH} -b ${HOME}/.dircolors)" >> "$host_env_static"
 
-  echo "" >> "$HOME/.shell.d/env-host-static.sh"
-  echo "" >> "$HOME/.shell.d/env-host-static.sh"
+  echo "" >> "$host_env_static"
+  echo "" >> "$host_env_static"
 
-  echo "# grc - generic colouriser for everything" >> "$HOME/.shell.d/env-host-static.sh"
-  echo "source $(brew --prefix)/etc/grc.zsh" >> "$HOME/.shell.d/env-host-static.sh"
+  # Static Environment Configuration - grc
+  echo "# grc - generic colouriser for everything" >> "$host_env_static"
+  echo "source $(brew --prefix)/etc/grc.zsh" >> "$host_env_static"
+
+  echo "" >> "$host_env_static"
+  echo "" >> "$host_env_static"
 fi
 
-# Static Configuration - Generic
-#   I found that some evaluations take time and slow down the loading of zsh, therefore,
-#   instead of evaluating in ~/.zshrc, I will do that during the bootstrap process.
-#   This file will not be tracked by yadm, but re-generated with every bootstrap.
-#   The following configuration is kept in this file:
-#      - Golang GOROOT Path
-#      - Ruby Gem Path
-echo "Setup GOROOT"
-echo "export GOROOT=$(go env GOROOT)" >> "$HOME/.shell.d/env-host-static.sh"
 
-echo "Setup Ruby Local User GemPath"
-echo "export RUBY_GEM_PATH=$(ruby -r rubygems -e 'puts Gem.user_dir')" >> "$HOME/.shell.d/env-host-static.sh"
+# Static Environment Configuration - GOROOT
+echo "export GOROOT=$(go env GOROOT)" >> "$host_env_static"
+
+echo "" >> "$host_env_static"
+echo "" >> "$host_env_static"
+
+# Static Environment Configuration - Ruby Gem Path for Local User
+echo "export RUBY_GEM_PATH=$(ruby -r rubygems -e 'puts Gem.user_dir')" >> "$host_env_static"
+
+echo "" >> "$host_env_static"
+echo "" >> "$host_env_static"
 
 # Create SSH configuration directory
 mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
