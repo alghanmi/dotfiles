@@ -39,8 +39,6 @@ if [ "$system_type" = "Darwin" ]; then
   #      - FZF Configuration
   #      - dircolors
   #      - grc
-  #      - ruby path
-  #      - Go Path
   rm -f "$HOME/.shell.d/env-host-static.sh"
 
   export FZF_HOME=$(brew --prefix fzf)
