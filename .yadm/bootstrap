@@ -31,7 +31,7 @@ if [ "$system_type" = "Darwin" ]; then
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
   fi
 
-  # Static Configuration
+  # Static Configuration - Brew
   #   I found that some evaluations take time and slow down the loading of zsh, therefore,
   #   instead of evaluating in ~/.zshrc, I will do that during the bootstrap process.
   #   This file will not be tracked by yadm, but re-generated with every bootstrap.
@@ -39,6 +39,8 @@ if [ "$system_type" = "Darwin" ]; then
   #      - FZF Configuration
   #      - dircolors
   #      - grc
+  #      - ruby path
+  #      - Go Path
   rm -f "$HOME/.shell.d/env-host-static.sh"
 
   export FZF_HOME=$(brew --prefix fzf)
@@ -60,6 +62,15 @@ if [ "$system_type" = "Darwin" ]; then
   echo "# grc - generic colouriser for everything" >> "$HOME/.shell.d/env-host-static.sh"
   echo "source $(brew --prefix)/etc/grc.zsh" >> "$HOME/.shell.d/env-host-static.sh"
 fi
+
+# Static Configuration - Generic
+#   I found that some evaluations take time and slow down the loading of zsh, therefore,
+#   instead of evaluating in ~/.zshrc, I will do that during the bootstrap process.
+#   This file will not be tracked by yadm, but re-generated with every bootstrap.
+#   The following configuration is kept in this file:
+#      - Golang GOROOT Path
+echo "Setup GOROOT"
+echo "export GOROOT=$(go env GOROOT)" >> "$HOME/.shell.d/env-host-static.sh"
 
 # Create SSH configuration directory
 mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
