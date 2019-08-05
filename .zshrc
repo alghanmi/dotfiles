@@ -60,23 +60,23 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle zsh-users/zsh-completions
 
   # Bundles
-  antigen bundle robbyrussell/oh-my-zsh plugins/git
-  antigen bundle robbyrussell/oh-my-zsh plugins/golang
-  antigen bundle robbyrussell/oh-my-zsh plugins/python
-  antigen bundle robbyrussell/oh-my-zsh plugins/pip
-  antigen bundle robbyrussell/oh-my-zsh plugins/virtualenv
-  antigen bundle robbyrussell/oh-my-zsh plugins/vscod
+  antigen bundle git
+  antigen bundle golang
+  antigen bundle python
+  antigen bundle pip
+  antigen bundle virtualenv
+  antigen bundle vscod
 
-  antigen bundle robbyrussell/oh-my-zsh plugins/docker
-  antigen bundle robbyrussell/oh-my-zsh plugins/terraform
-  antigen bundle robbyrussell/oh-my-zsh plugins/vagrant
-  antigen bundle robbyrussell/oh-my-zsh plugins/vault
+  antigen bundle docker
+  antigen bundle terraform
+  antigen bundle vagrant
+  antigen bundle vault
 
   antigen bundle rupa/z
   antigen bundle supercrabtree/k
 
   if [ "$(uname -s)" = "Darwin" ]; then
-    antigen bundle robbyrussell/oh-my-zsh plugins/osx
+    antigen bundle osx
   fi
 
   # Load theme and colors
