@@ -61,7 +61,8 @@ alias awsroles='cat ~/.aws/credentials| grep "^\[" | sed "s/\[\(.*\)\]/\1/" | so
 alias rmnt='sshfs -o uid=$(id -u) -o gid=$(id -g)'
 
 # Stop all SSH ControlMaster connections
-alias ssh-kill-cm='find ~/.ssh/sockets -type s -exec ssh ssh -o ControlPath={} -O stop \;'
+alias ssh-kill-cm='find ~/.ssh/sockets -type s ! -name "root-*" -exec ssh -o ControlPath={} -O exit \;'
+alias ssh-kill-cm-root='sudo find ~/.ssh/sockets -type s -name "root-*" -exec ssh -o ControlPath={} -O exit \;'
 
 ## Functions (used as aliases)
 # SSH without using key
