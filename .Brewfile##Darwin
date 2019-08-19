@@ -1,6 +1,6 @@
 tap "Homebrew/bundle"
-tap "caskroom/cask"
-tap "caskroom/fonts"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "wagoodman/dive" # for dive
 tap "wata727/tflint" # for TFLint
 brew "mas"
@@ -113,7 +113,6 @@ cask "vlc"
 # AppStore Applications
 mas "com.apple.dt.Xcode", id: 497799835
 mas "com.evernote.Evernote", id: 406056744
-mas "com.lastpass.LastPass", id: 926036361
 mas "com.tinyspeck.slackmacgap", id: 803453959
 mas "com.todoist.mac.Todoist", id: 585829637
 mas "com.yubico.YKPersonalization", id: 638161122
