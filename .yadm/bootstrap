@@ -21,7 +21,7 @@ if [ "$system_type" = "Darwin" ]; then
   if [ -f "$HOME/.Brewfile" ]; then
     echo "Updating homebrew bundle"
     brew update
-    brew doctor && brew bundle --global
+    brew doctor && brew bundle --file="$HOME/.Brewfile"
   fi
 
   # Install python packages
