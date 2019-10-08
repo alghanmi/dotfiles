@@ -76,6 +76,10 @@ echo "export RUBY_GEM_PATH=$(ruby -r rubygems -e 'puts Gem.user_dir')" >> "$host
 echo "" >> "$host_env_static"
 echo "" >> "$host_env_static"
 
+# Ruby Environment Configuration
+rbenv init
+rbenv install --skip-existing 2.1.0
+
 # Create SSH configuration directory
 mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
 chmod 700 "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
