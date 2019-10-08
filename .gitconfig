@@ -19,4 +19,6 @@
   ls = log --pretty=format:'%C(yellow)%h%C(bold yellow)%d - %C(reset)%s%C(reset) - %C(blue)[%an] %C(green)(%cr)%C(reset)' --decorate
   ll = log --pretty=format:'%C(yellow)%h%C(bold yellow)%d%C(reset) - %s%C(reset) - %C(blue)[%an] %C(green)(%ad)%C(reset)' --decorate --numstat
   hist = log --pretty=format:'%C(yellow)%h%C(bold yellow)%d%C(reset) - %s%C(reset) - %C(blue)[%an] %C(green)(%ad)%C(reset)' --abbrev-commit --graph --color --full-history --date-order --date=default
+  last = --no-pager log -1 --oneline --color
+  diff-branches = "!f() { git log --left-right --graph --cherry-pick --oneline \"$1\"..\"$2\"; }; f"
   delete-merged = !git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d
