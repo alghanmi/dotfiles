@@ -12,6 +12,7 @@ brew "cmake", args: ["with-completion"]
 brew "coreutils"
 brew "curl"
 brew "git"
+brew "gnu-sed"
 brew "gnupg"
 brew "mercurial"
 brew "reattach-to-user-namespace"
@@ -101,6 +102,7 @@ cask "virtualbox"
 cask "virtualbox-extension-pack"
 
 # Fonts
+cask "font-inconsolata"
 cask "font-inconsolata-dz"
 cask "font-inconsolata-dz-for-powerline"
 
