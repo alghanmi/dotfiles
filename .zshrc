@@ -1,3 +1,8 @@
+# Enable Powerlevel10k instant prompt.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Load shell config files
 for filename in $(find ~/.shell.d -name '*.sh' | sort); do
   source $filename
@@ -81,9 +86,7 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
 
   # Load theme and colors
   antigen bundle zlsun/solarized-man
-
-  antigen bundle mafredri/zsh-async
-  antigen bundle sindresorhus/pure
+  antigen theme romkatv/powerlevel10k
 
   # Apply changes
   antigen apply
@@ -103,3 +106,6 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   # Compltion for aliases
   compdef pyadm=yadm
 fi
+
+# Customize Prompt
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
