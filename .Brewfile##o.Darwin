@@ -67,6 +67,7 @@ brew "doxygen"
 brew "gcc"
 brew "git-lfs"
 brew "go", args: ["cross-compile-all"]
+brew "jp"
 brew "jq"
 brew "llvm"
 brew "maven"
