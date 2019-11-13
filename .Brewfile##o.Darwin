@@ -105,6 +105,8 @@ cask "virtualbox-extension-pack"
 cask "font-inconsolata"
 cask "font-inconsolata-dz"
 cask "font-inconsolata-dz-for-powerline"
+cask "font-inconsolatago-nerd-font"
+cask "font-inconsolatago-nerd-font-mono"
 
 # Media
 brew "ffmpeg", args: ["with-libssh", "with-openssl"]
