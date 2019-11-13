@@ -37,6 +37,7 @@ brew "unrar"
 # Editors
 brew "vim", args: ["with-override-system-vi", "with-python3"]
 cask "atom"
+cask "joplin"
 cask "textmate"
 cask "visual-studio-code"
 
