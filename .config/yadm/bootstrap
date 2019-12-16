@@ -126,18 +126,6 @@ if command -v tmux >/dev/null 2>&1; then
   fi
 fi
 
-# Bootstrap atom
-if command -v apm >/dev/null 2>&1; then
-  echo "Boorstrapping atom"
-  if [ ! -d "$HOME/.atom/packages" ]; then
-    # Install packages
-    apm install --packages-file "$HOME/.atom-packages"
-  else
-    # Upgrade packages
-    apm upgrade --no-confirm
-  fi
-fi
-
 # Bootstrap Go
 if [ ! -d "$HOME/go" ]; then
   mkdir $HOME/go
