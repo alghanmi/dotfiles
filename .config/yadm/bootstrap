@@ -65,21 +65,26 @@ fi
 
 
 # Static Environment Configuration - GOROOT
-echo "export GOROOT=$(go env GOROOT)" >> "$host_env_static"
+if command -v go >/dev/null 2>&1; then
+  echo "export GOROOT=$(go env GOROOT)" >> "$host_env_static"
 
-echo "" >> "$host_env_static"
-echo "" >> "$host_env_static"
+  echo "" >> "$host_env_static"
+  echo "" >> "$host_env_static"
+fi
 
 # Static Environment Configuration - Ruby Gem Path for Local User
-echo "export RUBY_GEM_PATH=$(ruby -r rubygems -e 'puts Gem.user_dir')" >> "$host_env_static"
+if command -v ruby >/dev/null 2>&1; then
+  echo "export RUBY_GEM_PATH=$(ruby -r rubygems -e 'puts Gem.user_dir')" >> "$host_env_static"
 
-echo "" >> "$host_env_static"
-echo "" >> "$host_env_static"
+  echo "" >> "$host_env_static"
+  echo "" >> "$host_env_static"
 
-# Ruby Environment Configuration
-rbenv init
-rbenv install --skip-existing 2.1.0
-
+  # Ruby Environment Configuration
+  if command -v rbenv >/dev/null 2>&1; then
+    rbenv init
+    rbenv install --skip-existing 2.1.0
+  fi
+fi
 # Create SSH configuration directory
 mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
 chmod 700 "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
@@ -127,21 +132,25 @@ if command -v tmux >/dev/null 2>&1; then
 fi
 
 # Bootstrap Go
-if [ ! -d "$HOME/go" ]; then
-  mkdir $HOME/go
-  mkdir -p $HOME/go/bin $HOME/go/pkg $HOME/go/src
+if command -v go >/dev/null 2>&1; then
+  if [ ! -d "$HOME/go" ]; then
+    mkdir $HOME/go
+    mkdir -p $HOME/go/bin $HOME/go/pkg $HOME/go/src
+  fi
 fi
 
 # Bootstrap Terraform
-if [ ! -d "$HOME/.terraform.d" ]; then
-  mkdir "$HOME/.terraform.d"
-  chmod 755 "$HOME/.terraform.d"
-fi
-if [ ! -d "$HOME/.terraform.d/plugins" ]; then
-  mkdir "$HOME/.terraform.d/plugins"
-  chmod 755 "$HOME/.terraform.d/plugins"
-fi
-if [ ! -d "$HOME/.terraform.d/plugin-cache" ]; then
-  mkdir "$HOME/.terraform.d/plugin-cache"
-  chmod 755 "$HOME/.terraform.d/plugin-cache"
+if command -v terraform >/dev/null 2>&1; then
+  if [ ! -d "$HOME/.terraform.d" ]; then
+    mkdir "$HOME/.terraform.d"
+    chmod 755 "$HOME/.terraform.d"
+  fi
+  if [ ! -d "$HOME/.terraform.d/plugins" ]; then
+    mkdir "$HOME/.terraform.d/plugins"
+    chmod 755 "$HOME/.terraform.d/plugins"
+  fi
+  if [ ! -d "$HOME/.terraform.d/plugin-cache" ]; then
+    mkdir "$HOME/.terraform.d/plugin-cache"
+    chmod 755 "$HOME/.terraform.d/plugin-cache"
+  fi
 fi

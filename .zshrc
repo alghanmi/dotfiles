@@ -47,8 +47,9 @@ unset SSH_AGENT_PID
 export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 # Ruby Configuration
-eval "$(rbenv init -)"
-
+if command -v rbenv >/dev/null 2>&1; then
+  eval "$(rbenv init -)"
+fi
 
 # Antigen Setup
 if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
