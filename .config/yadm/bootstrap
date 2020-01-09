@@ -45,7 +45,6 @@ if [ "$system_type" = "Darwin" ]; then
   echo "[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh" >> "$host_env_static"
 
   echo "" >> "$host_env_static"
-  echo "" >> "$host_env_static"
 
   # Static Environment Configuration - dircolors
   export GNU_DIRCOLORS_PATH="$(brew --prefix)/bin/gdircolors"
@@ -53,30 +52,28 @@ if [ "$system_type" = "Darwin" ]; then
   echo "$(${GNU_DIRCOLORS_PATH} -b ${HOME}/.dircolors)" >> "$host_env_static"
 
   echo "" >> "$host_env_static"
-  echo "" >> "$host_env_static"
 
   # Static Environment Configuration - grc
   echo "# grc - generic colouriser for everything" >> "$host_env_static"
   echo "source $(brew --prefix)/etc/grc.zsh" >> "$host_env_static"
 
   echo "" >> "$host_env_static"
-  echo "" >> "$host_env_static"
 fi
 
 
 # Static Environment Configuration - GOROOT
 if command -v go >/dev/null 2>&1; then
+  echo "# Setup golang's GOROOT environment variable" >> "$host_env_static"
   echo "export GOROOT=$(go env GOROOT)" >> "$host_env_static"
 
-  echo "" >> "$host_env_static"
   echo "" >> "$host_env_static"
 fi
 
 # Static Environment Configuration - Ruby Gem Path for Local User
 if command -v ruby >/dev/null 2>&1; then
+  echo "# Setup Ruby Gem Path" >> "$host_env_static"
   echo "export RUBY_GEM_PATH=$(ruby -r rubygems -e 'puts Gem.user_dir')" >> "$host_env_static"
 
-  echo "" >> "$host_env_static"
   echo "" >> "$host_env_static"
 
   # Ruby Environment Configuration
