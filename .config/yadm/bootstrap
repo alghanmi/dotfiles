@@ -24,17 +24,17 @@ if [ "$system_type" = "Darwin" ]; then
     brew doctor && brew bundle --file="$HOME/.Brewfile"
   fi
 
-  # Install python packages
-  if [ -f "$HOME/.pip-packages" ]; then
-    echo "Install python packages"
-    pip install --upgrade --requirement "$HOME/.pip-packages"
-  fi
-
   # Setup iTerm2
   if [ -d "$HOME/.iterm2" ]; then
     echo "Setting iTerm preference folder"
     defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.iterm2"
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+  fi
+
+  # Install python packages
+  if [ -f "$HOME/.pip-packages" ]; then
+    echo "Install python packages"
+    pip3 install --upgrade --requirement "$HOME/.pip-packages"
   fi
 
   # Static Environment Configuration - FZF
@@ -46,13 +46,17 @@ if [ "$system_type" = "Darwin" ]; then
 
   echo "" >> "$host_env_static"
 
+  echo "# Make python aliases point to python3 because 2 is no longer installed" >> "$host_env_static"
+  echo "export PATH=$(brew --prefix python)/libexec/bin:\$PATH" >> "$host_env_static"
+  
+  echo "" >> "$host_env_static"
+
   # Static Environment Configuration - dircolors
   export GNU_DIRCOLORS_PATH="$(brew --prefix)/bin/gdircolors"
   echo "# dircolors" >> "$host_env_static"
   echo "$(${GNU_DIRCOLORS_PATH} -b ${HOME}/.dircolors)" >> "$host_env_static"
 
   echo "" >> "$host_env_static"
-
   # Static Environment Configuration - grc
   echo "# grc - generic colouriser for everything" >> "$host_env_static"
   echo "source $(brew --prefix)/etc/grc.zsh" >> "$host_env_static"
