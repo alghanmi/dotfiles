@@ -72,4 +72,4 @@ function ssh_nokey() { ssh -o PreferredAuthentications=keyboard-interactive,pass
 function ssl_cert_connect_dns() { openssl s_client -showcerts -connect "$@" | openssl x509 -text -noout | grep DNS  ;}
 
 # Obtain Weather information from wttr
-function w(){curl https://wttr.in/$1}
+function w(){curl "https://wttr.in/$1?F"}
