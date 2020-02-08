@@ -97,12 +97,8 @@ if [ -f "$HOME/.antigen/antigen.log" ]; then
 fi
 zsh -c 'source $HOME/.zshrc && antigen update'
 
-# Re-Create zsh completion
-echo "Recreating ZSH completion"
-if [ -f "$HOME/.zcompdump" ]; then
-  rm "$HOME/.zcompdump"
-fi
-zsh -c 'source $HOME/.zshrc && autoload -U compinit && compinit'
+echo "Antigen Reset"
+zsh -c 'source $HOME/.zshrc && antigen reset'
 
 # Bootstrap vim
 if command -v vim >/dev/null 2>&1; then
