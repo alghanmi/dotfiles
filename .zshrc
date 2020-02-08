@@ -15,6 +15,7 @@ setopt complete_aliases
 setopt correct_all
 setopt extended_glob
 setopt interactive_comments
+setopt nonomatch
 setopt pushd_ignore_dups
 
 # ZSH History Options
