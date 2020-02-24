@@ -53,6 +53,7 @@ cask "firefox"
 cask "gitter"
 cask "google-chrome"
 cask "handbrake"
+cask "signal"
 
 # Dev Tools
 brew "ant"
