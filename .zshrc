@@ -18,6 +18,8 @@ setopt interactive_comments
 setopt nonomatch
 setopt pushd_ignore_dups
 
+DISABLE_MAGIC_FUNCTIONS=true
+
 # ZSH History Options
 HISTSIZE=50000
 SAVEHIST=50000
