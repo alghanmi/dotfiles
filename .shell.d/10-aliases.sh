@@ -34,6 +34,7 @@ else
   alias update='sudo apt update && sudo apt full-upgrade && sudo apt autoremove && sudo apt clean'
 fi
 
+# grep colored
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
