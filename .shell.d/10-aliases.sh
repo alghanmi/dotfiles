@@ -38,6 +38,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+# ip colored
+alias ip='ip -c'
+
 # GPG Aliases
 alias gpg-reload='echo KILLAGENT | gpg-connect-agent && gpg-connect-agent /bye; gpgconf --kill gpg-agent'
 
