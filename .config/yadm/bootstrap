@@ -95,10 +95,10 @@ echo "Upgrading Antigen plugins"
 if [ -f "$HOME/.antigen/antigen.log" ]; then
   mv "$HOME/.antigen/antigen.log" "$HOME/.antigen/antigen.$(date +'%Y%m%d-%H%M%S').log"
 fi
-zsh -c 'source $HOME/.zshrc && antigen update'
+zsh -c '. $HOME/.zshrc && antigen update'
 
 echo "Antigen Reset"
-zsh -c 'source $HOME/.zshrc && antigen reset'
+zsh -c '. $HOME/.zshrc && antigen reset'
 
 # Bootstrap vim
 if command -v vim >/dev/null 2>&1; then
