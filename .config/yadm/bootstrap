@@ -86,6 +86,7 @@ if command -v ruby >/dev/null 2>&1; then
     rbenv install --skip-existing 2.1.0
   fi
 fi
+
 # Create SSH configuration directory
 mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
 chmod 700 "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
