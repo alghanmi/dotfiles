@@ -68,6 +68,9 @@ alias rmnt='sshfs -o uid=$(id -u) -o gid=$(id -g)'
 alias ssh-kill-cm='find ~/.ssh/sockets -type s ! -name "root-*" -exec ssh ssh -o ControlPath={} -O exit \;'
 alias ssh-kill-cm-root='sudo find ~/.ssh/sockets -type s -name "root-*" -exec ssh ssh -o ControlPath={} -O exit \;'
 
+# Docker Aliases
+alias docker-clean='docker ps -a --format "{{ .ID }}" | xargs docker rm; docker images --filter "dangling=true" --format "{{ .ID }}" | xargs docker rmi'
+
 ## Functions (used as aliases)
 # SSH without using key
 function ssh_nokey() { ssh -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no "$@" ;}
