@@ -69,10 +69,7 @@ brew "llvm"
 brew "maven"
 brew "node"
 brew "python3"
-brew "rbenv"
-brew "ruby"
 brew "yarn"
-cask "java"
 
 # Infra Tools
 brew "ansible"

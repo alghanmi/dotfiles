@@ -5,7 +5,8 @@ system_type=$(uname -s)
 
 # Static Environment Configuration
 #   I found that some evaluations take time and slow down the loading of zsh, therefore,
-#   instead of evaluating in ~/.zshrc, I will do that during the bootstrap process.
+#   instead of evaluating in ~/.zshrc, I will set the values in a file that is regenerated
+#   during every run of the bootstrap process.
 host_env_static="$HOME/.shell.d/00-env-host-static.sh"
 rm -f "$host_env_static"
 
@@ -21,7 +22,8 @@ if [ "$system_type" = "Darwin" ]; then
   if [ -f "$HOME/.Brewfile" ]; then
     echo "Updating homebrew bundle"
     brew update
-    brew doctor && brew bundle --file="$HOME/.Brewfile"
+    brew doctor
+    brew bundle --file="$HOME/.Brewfile"
   fi
 
   # Setup iTerm2
@@ -73,20 +75,6 @@ if command -v go >/dev/null 2>&1; then
   echo "" >> "$host_env_static"
 fi
 
-# Static Environment Configuration - Ruby Gem Path for Local User
-if command -v ruby >/dev/null 2>&1; then
-  echo "# Setup Ruby Gem Path" >> "$host_env_static"
-  echo "export RUBY_GEM_PATH=$(ruby -r rubygems -e 'puts Gem.user_dir')" >> "$host_env_static"
-
-  echo "" >> "$host_env_static"
-
-  # Ruby Environment Configuration
-  if command -v rbenv >/dev/null 2>&1; then
-    rbenv init
-    rbenv install --skip-existing 2.1.0
-  fi
-fi
-
 # Create SSH configuration directory
 mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
 chmod 700 "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
@@ -131,14 +119,26 @@ fi
 
 # Bootstrap Go
 if command -v go >/dev/null 2>&1; then
+  echo "Bootstrapping Go"
   if [ ! -d "$HOME/go" ]; then
     mkdir $HOME/go
     mkdir -p $HOME/go/bin $HOME/go/pkg $HOME/go/src
   fi
 fi
 
+# Vagrant Plugins
+if command -v vagrant >/dev/null 2>&1; then
+  echo "Vagrant plugins"
+  if [ -n "$(vagrant plugin list | grep vagrant-vbguest)" ]; then
+  	vagrant plugin update
+  else
+  	vagrant plugin install vagrant-vbguest
+  fi
+fi
+
 # Bootstrap Terraform
 if command -v terraform >/dev/null 2>&1; then
+  echo "Bootstrapping Terraform"
   if [ ! -d "$HOME/.terraform.d" ]; then
     mkdir "$HOME/.terraform.d"
     chmod 755 "$HOME/.terraform.d"
