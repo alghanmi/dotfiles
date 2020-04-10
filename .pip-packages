@@ -5,3 +5,4 @@ psutil
 pyvirtualdisplay
 requests
 virtualenv
+yq
