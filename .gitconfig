@@ -9,6 +9,9 @@
   tool = vimdiff
   conflictstyle = diff3
 
+[pull]
+	rebase = false
+
 [include]
   path = ~/.gitconfig.local
 
