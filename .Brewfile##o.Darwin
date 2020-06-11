@@ -50,6 +50,7 @@ cask "firefox"
 cask "gitter"
 cask "google-chrome"
 cask "handbrake"
+cask "keybase"
 cask "signal"
 
 # Dev Tools
