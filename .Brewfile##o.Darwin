@@ -1,7 +1,6 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "wata727/tflint" # for TFLint
 brew "mas"
 
 # Shell essentials
