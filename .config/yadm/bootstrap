@@ -156,6 +156,7 @@ fi
 # Install Visual Studio Code Plugins
 if [ -f "$HOME/.vscode-extensions" ]; then
   if command -v code >/dev/null 2>&1; then
+    echo "Installing visual studio code plugins"
     cat "$HOME/.vscode-extensions" | xargs -n 1 code --force --install-extension
   fi
 fi
