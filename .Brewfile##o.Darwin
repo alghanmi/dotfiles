@@ -54,19 +54,14 @@ cask "handbrake"
 cask "signal"
 
 # Dev Tools
-brew "ant"
-brew "boost"
-brew "brew-gem"
 brew "brew-pip"
 brew "dep"
-brew "doxygen"
 brew "gcc"
 brew "git-lfs"
 brew "go", args: ["cross-compile-all"]
 brew "jp"
 brew "jq"
 brew "llvm"
-brew "maven"
 brew "node"
 brew "python3"
 brew "yarn"
@@ -102,7 +97,6 @@ cask "font-inconsolata"
 cask "font-inconsolata-dz"
 cask "font-inconsolata-dz-for-powerline"
 cask "font-inconsolatago-nerd-font"
-cask "font-inconsolatago-nerd-font-mono"
 
 # Media
 brew "ffmpeg", args: ["with-libssh", "with-openssl"]
