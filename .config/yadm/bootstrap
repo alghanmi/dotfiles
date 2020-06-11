@@ -152,3 +152,10 @@ if command -v terraform >/dev/null 2>&1; then
     chmod 755 "$HOME/.terraform.d/plugin-cache"
   fi
 fi
+
+# Install Visual Studio Code Plugins
+if [ -f "$HOME/.vscode-extensions" ]; then
+  if command -v code >/dev/null 2>&1; then
+    cat "$HOME/.vscode-extensions" | xargs -n 1 code --force --install-extension
+  fi
+fi
