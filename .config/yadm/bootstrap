@@ -23,6 +23,7 @@ if [ "$system_type" = "Darwin" ]; then
     echo "Updating homebrew bundle"
     brew update
     brew doctor
+    brew upgrade  # Ensure all packages are upgraded
     brew bundle --file="$HOME/.Brewfile"
   fi
 
