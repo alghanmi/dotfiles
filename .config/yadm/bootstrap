@@ -40,27 +40,32 @@ if [ "$system_type" = "Darwin" ]; then
   echo "# FZF Configuration" >> "$host_env_static"
   echo "export FZF_HOME=$FZF_HOME" >> "$host_env_static"
   echo "[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh" >> "$host_env_static"
-
   echo "" >> "$host_env_static"
 
   # Static Environment Configuration - python
   echo "# Make python aliases point to python3 because 2 is no longer installed" >> "$host_env_static"
   echo "export PATH=$(brew --prefix python)/libexec/bin:\$PATH" >> "$host_env_static"
   export PATH=$(brew --prefix python)/libexec/bin:$PATH
-
   echo "" >> "$host_env_static"
+
+  # Static Environment Configuration - curl
+  export _homebrew_managed=( curl sqlite )
+  for pkg in $_homebrew_managed; do
+    echo "${pkg} - adding homebrew-managed package to the begning of path" >> "$host_env_static"
+    echo "export PATH=$(brew --prefix ${pkg})/bin:\$PATH" >> "$host_env_static"
+    export PATH=$(brew --prefix ${pkg})/bin:$PATH
+    echo "" >> "$host_env_static"
+  done
 
   # Static Environment Configuration - dircolors
   export GNU_DIRCOLORS_PATH="$(brew --prefix)/bin/gdircolors"
   echo "# dircolors" >> "$host_env_static"
   echo "$(${GNU_DIRCOLORS_PATH} -b ${HOME}/.dircolors)" >> "$host_env_static"
-
   echo "" >> "$host_env_static"
 
   # Static Environment Configuration - grc
   echo "# grc - generic colouriser for everything" >> "$host_env_static"
   echo "source $(brew --prefix)/etc/grc.zsh" >> "$host_env_static"
-
   echo "" >> "$host_env_static"
 
   # Install python packages
