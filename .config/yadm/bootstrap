@@ -34,12 +34,6 @@ if [ "$system_type" = "Darwin" ]; then
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
   fi
 
-  # Install python packages
-  if [ -f "$HOME/.pip-packages" ]; then
-    echo "Install python packages"
-    pip3 install --upgrade --requirement "$HOME/.pip-packages"
-  fi
-
   # Static Environment Configuration - FZF
   export FZF_HOME=$(brew --prefix fzf)
   $FZF_HOME/install --no-bash --no-fish --completion --key-bindings --no-update-rc
@@ -49,9 +43,11 @@ if [ "$system_type" = "Darwin" ]; then
 
   echo "" >> "$host_env_static"
 
+  # Static Environment Configuration - python
   echo "# Make python aliases point to python3 because 2 is no longer installed" >> "$host_env_static"
   echo "export PATH=$(brew --prefix python)/libexec/bin:\$PATH" >> "$host_env_static"
-  
+  export PATH=$(brew --prefix python)/libexec/bin:$PATH
+
   echo "" >> "$host_env_static"
 
   # Static Environment Configuration - dircolors
@@ -60,11 +56,18 @@ if [ "$system_type" = "Darwin" ]; then
   echo "$(${GNU_DIRCOLORS_PATH} -b ${HOME}/.dircolors)" >> "$host_env_static"
 
   echo "" >> "$host_env_static"
+
   # Static Environment Configuration - grc
   echo "# grc - generic colouriser for everything" >> "$host_env_static"
   echo "source $(brew --prefix)/etc/grc.zsh" >> "$host_env_static"
 
   echo "" >> "$host_env_static"
+
+  # Install python packages
+  if [ -f "$HOME/.pip-packages" ]; then
+    echo "Install python packages"
+    pip3 install --upgrade --requirement "$HOME/.pip-packages"
+  fi
 fi
 
 
