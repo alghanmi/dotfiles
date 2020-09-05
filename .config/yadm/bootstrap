@@ -18,6 +18,10 @@ if [ "$system_type" = "Darwin" ]; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
 
+  # Install XCode Command Line Tools (CLT)
+  echo "XCode Command Line Tools (CLT)"
+  xcode-select --install &> /dev/null
+
   # Install/update brew bundle
   if [ -f "$HOME/.Brewfile" ]; then
     echo "Updating homebrew bundle"
@@ -49,9 +53,9 @@ if [ "$system_type" = "Darwin" ]; then
   echo "" >> "$host_env_static"
 
   # Static Environment Configuration - curl
-  export _homebrew_managed=( curl sqlite )
-  for pkg in $_homebrew_managed; do
-    echo "${pkg} - adding homebrew-managed package to the begning of path" >> "$host_env_static"
+  export _homebrew_managed=(curl sqlite)
+  for pkg in ${_homebrew_managed[@]}; do
+    echo "# ${pkg} - adding homebrew-managed package to the begning of path" >> "$host_env_static"
     echo "export PATH=$(brew --prefix ${pkg})/bin:\$PATH" >> "$host_env_static"
     export PATH=$(brew --prefix ${pkg})/bin:$PATH
     echo "" >> "$host_env_static"
@@ -70,6 +74,10 @@ if [ "$system_type" = "Darwin" ]; then
 
   # Install python packages
   if [ -f "$HOME/.pip-packages" ]; then
+    echo "Upgrade setuptools"
+    python3 -m pip install --upgrade setuptools
+    echo "Upgrade pip"
+    python3 -m pip install --upgrade pip
     echo "Install python packages"
     pip3 install --upgrade --requirement "$HOME/.pip-packages"
   fi
