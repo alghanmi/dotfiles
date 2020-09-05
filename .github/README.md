@@ -24,3 +24,10 @@ If you get an error like `chsh: /usr/local/bin/zsh: non-standard shell`, this me
 ```sh
 echo "$(which zsh)" | sudo tee -a /etc/shells
 ```
+
+### Antigen Error in Ubuntu
+In recent releases of Ubuntu (seen in 18.04 up to 20.04), the Antigen package is malformed. This will result in Antigen not loading properly. This is reported in [zsh-users/antigen/issues/659](https://github.com/zsh-users/antigen/issues/659). To resolve this issue, you can download the latest version of Antigen manually:
+
+```sh
+sudo curl --silent --location --output /usr/share/zsh-antigen/antigen.zsh https://raw.githubusercontent.com/zsh-users/antigen/master/bin/antigen.zsh
+```
