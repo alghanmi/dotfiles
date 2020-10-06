@@ -17,7 +17,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
   fi
 
   # Package Management
-  alias update='brew update && brew upgrade && brew cask upgrade && brew doctor'
+  alias update='brew update && brew upgrade && brew upgrade --cask && brew doctor'
 
   #dircolors
   alias dircolors='gdircolors'
