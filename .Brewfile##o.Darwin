@@ -66,6 +66,7 @@ brew "llvm"
 brew "node"
 brew "python3"
 brew "yarn"
+brew "yq"
 
 # Infra Tools
 brew "ansible"
