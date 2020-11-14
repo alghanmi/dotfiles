@@ -81,6 +81,13 @@ if [ "$system_type" = "Darwin" ]; then
     echo "Install python packages"
     pip3 install --upgrade --requirement "$HOME/.pip-packages"
   fi
+
+  # Set default applications for known extensions.
+  # Application names can be found using the mdls command, e.g.
+  # mdls -name kMDItemCFBundleIdentifier -r  /Applications/Visual\ Studio\ Code.app
+  duti -s com.microsoft.VSCode yaml all
+  duti -s com.microsoft.VSCode yml all
+  duti -s com.microsoft.VSCode json all
 fi
 
 
