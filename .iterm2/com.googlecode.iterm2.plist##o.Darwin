@@ -6,6 +6,8 @@
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
+	<key>ApplePressAndHoldEnabled</key>
+	<false/>
 	<key>AppleScrollAnimationEnabled</key>
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
@@ -564,6 +566,13 @@
 					<key>Text</key>
 					<string>[24;2~</string>
 				</dict>
+				<key>0xf729-0x0</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x01 0x61</string>
+				</dict>
 				<key>0xf729-0x20000</key>
 				<dict>
 					<key>Action</key>
@@ -577,6 +586,13 @@
 					<integer>10</integer>
 					<key>Text</key>
 					<string>[1;5H</string>
+				</dict>
+				<key>0xf72b-0x0</key>
+				<dict>
+					<key>Action</key>
+					<integer>11</integer>
+					<key>Text</key>
+					<string>0x05</string>
 				</dict>
 				<key>0xf72b-0x20000</key>
 				<dict>
