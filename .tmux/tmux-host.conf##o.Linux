@@ -1,0 +1,3 @@
+# Copy command configuration
+bind-key -T copy-mode-vi y                 send-keys -X copy-pipe "xclip -selection clipboard -i"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe "xclip -selection clipboard -i"     \; display-message "highlighted selection copied.."
