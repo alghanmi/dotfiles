@@ -14,10 +14,9 @@
 			},
 			{
 				"function": "powerline.segments.common.time.date",
-				"name": "time",
+				"name": "week",
 				"args": {
-					"format": "%H:%M",
-					"istime": true
+					"format": "%Y.%V"
 				}
 			},
 			{
