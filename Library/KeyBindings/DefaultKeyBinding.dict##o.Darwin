@@ -28,6 +28,8 @@ delete:       \U007F
 */
 
 {
+  "\UF728"   = "deleteForward:";                                /* Del */
+
   "\UF729"   = "moveToBeginningOfLine:";                        /* Home */
   "\UF72B"   = "moveToEndOfLine:";                              /* End */
 
