@@ -56,7 +56,6 @@ cask "signal"
 
 # Dev Tools
 brew "brew-pip"
-brew "dep"
 brew "gcc"
 brew "git-lfs"
 brew "go", args: ["cross-compile-all"]
@@ -102,7 +101,6 @@ cask "font-inconsolatago-nerd-font"
 # Media
 brew "ffmpeg", args: ["with-libssh", "with-openssl"]
 brew "flac", args: ["with-libogg"]
-brew "libav"
 brew "youtube-dl"
 cask "mpv"
 cask "vlc"
