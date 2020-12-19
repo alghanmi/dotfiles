@@ -31,7 +31,6 @@ brew "htop"
 brew "nmap"
 brew "pwgen"
 brew "tcptraceroute"
-brew "unrar"
 
 # Editors
 brew "vim", args: ["with-override-system-vi", "with-python3"]
