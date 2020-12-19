@@ -10,6 +10,9 @@ system_type=$(uname -s)
 host_env_static="$HOME/.shell.d/00-env-host-static.sh"
 rm -f "$host_env_static"
 
+# Create local bin directory
+mkdir -p $HOME/.local/bin
+
 # Bootstrap MacOS
 if [ "$system_type" = "Darwin" ]; then
   # Install homebrew if it's missing
