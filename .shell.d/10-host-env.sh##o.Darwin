@@ -7,3 +7,6 @@ export HOMEBREW_NO_ANALYTICS=1
 export ZSH_ANTIGEN_HOME=/usr/local/share/antigen
 export ADOTDIR=$HOME/.antigen
 export ANTIGEN_LOG=$ADOTDIR/antigen.log
+
+# Python Variables
+export PYTHONUSERBASE=$HOME/.local
