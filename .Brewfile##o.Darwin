@@ -24,6 +24,7 @@ brew "watch"
 brew "wget"
 brew "yadm"
 brew "zsh"
+brew "zsh-completions"
 
 # Tools
 brew "grc"
