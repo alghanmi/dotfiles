@@ -89,8 +89,6 @@ brew "graphviz"
 
 # Virtualization
 cask "vagrant"
-cask "virtualbox"
-cask "virtualbox-extension-pack"
 
 # Fonts
 cask "font-inconsolata"
