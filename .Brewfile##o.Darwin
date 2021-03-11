@@ -91,10 +91,8 @@ brew "graphviz"
 cask "vagrant"
 
 # Fonts
-cask "font-inconsolata"
-cask "font-inconsolata-dz"
-cask "font-inconsolata-dz-for-powerline"
-cask "font-inconsolatago-nerd-font"
+cask "font-inconsolata-nerd-font"
+cask "font-inconsolata-go-nerd-font"
 
 # Media
 brew "ffmpeg"
