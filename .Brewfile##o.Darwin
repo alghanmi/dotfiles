@@ -6,7 +6,7 @@ brew "mas"
 # Shell essentials
 brew "antigen"
 brew "bash-completion"
-brew "cmake", args: ["with-completion"]
+brew "cmake"
 brew "coreutils"
 brew "curl"
 brew "git"
@@ -34,7 +34,7 @@ brew "pwgen"
 brew "tcptraceroute"
 
 # Editors
-brew "vim", args: ["with-override-system-vi", "with-python3"]
+brew "vim"
 cask "joplin"
 cask "textmate"
 cask "visual-studio-code"
@@ -58,7 +58,7 @@ cask "signal"
 brew "brew-pip"
 brew "gcc"
 brew "git-lfs"
-brew "go", args: ["cross-compile-all"]
+brew "go"
 brew "jp"
 brew "jq"
 brew "llvm"
@@ -99,14 +99,13 @@ cask "font-inconsolata-dz-for-powerline"
 cask "font-inconsolatago-nerd-font"
 
 # Media
-brew "ffmpeg", args: ["with-libssh", "with-openssl"]
-brew "flac", args: ["with-libogg"]
+brew "ffmpeg"
+brew "flac"
 brew "youtube-dl"
 cask "mpv"
 cask "vlc"
 
 # AppStore Applications
-mas "com.apple.dt.Xcode", id: 497799835
 mas "com.evernote.Evernote", id: 406056744
 mas "com.tinyspeck.slackmacgap", id: 803453959
 mas "com.todoist.mac.Todoist", id: 585829637
