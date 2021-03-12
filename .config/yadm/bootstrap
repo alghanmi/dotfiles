@@ -31,6 +31,7 @@ if [ "$system_type" = "Darwin" ]; then
     brew update
     brew doctor
     brew upgrade  # Ensure all packages are upgraded
+    brew cleanup --prune=14
     brew bundle --file="$HOME/.Brewfile"
   fi
   
