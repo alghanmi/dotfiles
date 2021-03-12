@@ -43,7 +43,7 @@ When a brand new installation of MacOS, it is not ready to use YADM out of the b
     ```
 1. Run [`yadm`](https://thelocehiliosan.github.io/yadm/) and bootstrap
     ```sh
-    yadm clone --bootstrap https://github.com/alghanmi/dotfiles.git
+    /tmp/yadm clone --bootstrap https://github.com/alghanmi/dotfiles.git
     ```
 
 ### Antigen Error in Ubuntu
