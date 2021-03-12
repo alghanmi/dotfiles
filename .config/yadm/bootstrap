@@ -33,6 +33,16 @@ if [ "$system_type" = "Darwin" ]; then
     brew upgrade  # Ensure all packages are upgraded
     brew bundle --file="$HOME/.Brewfile"
   fi
+  
+  # Enable and use the brew-managed ZSH
+  if ! grep -Fxq "$(brew --prefix)/bin/zsh" /etc/shells; then
+    sudo cp /etc/shells /etc/shells.default
+    echo "$(brew --prefix)/bin/zsh" | sudo tee -a /etc/shells
+  fi
+
+  if [ "$SHELL" != "$(brew --prefix)/bin/zsh" ]; then
+    chsh -s $(brew --prefix)/bin/zsh
+  fi
 
   # Setup iTerm2
   if [ -d "$HOME/.iterm2" ]; then
