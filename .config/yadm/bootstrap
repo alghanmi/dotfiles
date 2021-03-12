@@ -24,6 +24,10 @@ if [ "$system_type" = "Darwin" ]; then
   # Install XCode Command Line Tools (CLT)
   echo "XCode Command Line Tools (CLT)"
   xcode-select --install &> /dev/null
+  
+  # Ensure your MacOS is up to date
+  echo "Updating MacOS"
+  softwareupdate --all --install --force
 
   # Install/update brew bundle
   if [ -f "$HOME/.Brewfile" ]; then
