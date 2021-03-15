@@ -25,6 +25,27 @@ If you get an error like `chsh: /usr/local/bin/zsh: non-standard shell`, this me
 echo "$(which zsh)" | sudo tee -a /etc/shells
 ```
 
+### Bootstrapping a Fresh MacOS Install
+When a brand new installation of MacOS, it is not ready to use YADM out of the box. Please follow these steps for bootstrap the host initially, then, you can use [`yadm`](https://thelocehiliosan.github.io/yadm/) normally after that.
+
+1. Open the `App Store` and _Sign-in_ using your Apple credentials. This will allow you to install applications from the Mac App Store using [mas-cli](https://github.com/mas-cli/mas) with Homebrew.
+1. Install _Command Line Tools for Xcode_. You can download it from the [Apple Developer](https://developer.apple.com/download/more/?=command%20line%20tools) site or using the following command:
+    ```sh
+    xcode-select --install
+    ```
+1. Update MacOS including _Command Line Tools for Xcode_:
+    ```sh
+    softwareupdate --all --install --force
+    ```
+1. Install a temporary version of [`yadm`](https://thelocehiliosan.github.io/yadm/)
+    ```sh
+    curl -fLo /tmp/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x /tmp/yadm 
+    ```
+1. Run [`yadm`](https://thelocehiliosan.github.io/yadm/) and bootstrap
+    ```sh
+    /tmp/yadm clone --bootstrap https://github.com/alghanmi/dotfiles.git
+    ```
+
 ### Antigen Error in Ubuntu
 In recent releases of Ubuntu (seen in 18.04 up to 20.04), the Antigen package is malformed. This will result in Antigen not loading properly. This is reported in [zsh-users/antigen/issues/659](https://github.com/zsh-users/antigen/issues/659). To resolve this issue, you can download the latest version of Antigen manually:
 
