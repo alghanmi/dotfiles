@@ -1,6 +1,3 @@
-# Personal/Private YADM Repository
-alias pyadm='yadm --yadm-dir ~/.yadm-personal'
-
 # Standard Aliases
 if [ "$(uname -s)" = "Darwin" ]; then
   if command -v gls >/dev/null 2>&1; then
