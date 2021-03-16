@@ -90,7 +90,7 @@ brew "fzf"
 brew "graphviz"
 
 # Virtualization
-cask "vagrant"
+#cask "vagrant"
 
 # Fonts
 cask "font-inconsolata-nerd-font"
