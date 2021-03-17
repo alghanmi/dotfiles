@@ -52,7 +52,7 @@ if [ "$system_type" = "Darwin" ]; then
   # Setup iTerm2
   if [ -d "$HOME/.iterm2" ]; then
     echo "Setting iTerm preference folder"
-    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.iterm2"
+    defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.config/iterm2"
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
     defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile -bool true
     defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile_selection -bool true
