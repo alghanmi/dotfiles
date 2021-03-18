@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
 brew "mas"
 
 # Shell essentials
@@ -51,8 +52,8 @@ cask "dropbox"
 cask "firefox"
 cask "gitter"
 cask "google-chrome"
+cask "google-chrome-canary"
 cask "handbrake"
-cask "keybase"
 cask "logitech-options"
 cask "signal"
 
@@ -86,6 +87,7 @@ brew "ykpers"
 
 # Dependencies for Apps
 brew "asciinema"
+brew "duti"
 brew "fzf"
 brew "graphviz"
 
