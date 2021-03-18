@@ -11,6 +11,19 @@
 ##
 
 ##
+## Defaults - Change to suite your needs
+##
+_dock_apps=(
+	"/Applications/iTerm.app"
+	"/Applications/Visual Studio Code.app"
+	"/Applications/IntelliJ IDEA.app"
+	"/Applications/Slack.app"
+	"/Applications/Google Chrome.app"
+	"/Applications/Google Chrome Canary.app"
+	"/Applications/Microsoft Outlook.app"
+)
+
+##
 ## Backup Configuration
 ##
 _backup_path=${HOME}/.config/macos/plist_backup/$(date '+%Y%m%d%H%M')
@@ -55,6 +68,7 @@ defaults read > ${_backup_path}/global-settings
 
 # Enable global dark mode
 defaults write -g NSRequiresAquaSystemAppearance -bool true
+defaults write 'Apple Global Domain' AppleInterfaceStyle -string Dark
 
 # Rolleback dark mode
 #defaults delete -g NSRequiresAquaSystemAppearance
@@ -233,6 +247,11 @@ defaults write com.apple.dock largesize -int 65
 # Remove all (default) app icons from the Dock
 defaults write com.apple.dock persistent-apps -array
 
+# Setup persistent apps in the Dock
+for _app in "${_dock_apps[@]}"; do
+	defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${_app}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
+done
+
 ##
 ## Hot corners
 ##
@@ -394,3 +413,9 @@ defaults write com.microsoft.Outlook CalendarGridSecondTimeZoneID 8
 defaults write com.microsoft.Outlook CalendarGridSecondTimeZoneLabel DUB
 defaults write com.microsoft.Outlook CalendarGridShowSecondTimeZone 1
 defaults write com.microsoft.Outlook CalendarGridViewTimeScale 8
+
+
+###
+### Backup Settings After Running the Script
+###
+defaults read > ${_backup_path}/global-settings-after
