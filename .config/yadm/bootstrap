@@ -50,7 +50,7 @@ if [ "$system_type" = "Darwin" ]; then
   fi
 
   # Setup iTerm2
-  if [ -d "$HOME/.iterm2" ]; then
+  if [ -d "$HOME/.config/iterm2" ]; then
     echo "Setting iTerm preference folder"
     defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$HOME/.config/iterm2"
     defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
@@ -115,6 +115,8 @@ if [ "$system_type" = "Darwin" ]; then
   chmod 755 /usr/local/share/zsh/site-functions
 fi
 
+# Compdump clean-up
+zsh -c 'rm -f ~/.zcompdump; compinit'
 
 # Static Environment Configuration - GOROOT
 if command -v go >/dev/null 2>&1; then
