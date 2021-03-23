@@ -22,7 +22,7 @@
 .settings/
 *.classpath
 target/
-
+.idea/
 
 ##
 ## Packages
