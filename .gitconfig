@@ -25,3 +25,6 @@
   last = --no-pager log -1 --oneline --color
   diff-branches = "!f() { git log --left-right --graph --cherry-pick --oneline \"$1\"..\"$2\"; }; f"
   delete-merged = !git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d
+
+[init]
+	defaultBranch = main
