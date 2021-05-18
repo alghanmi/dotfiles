@@ -77,9 +77,12 @@ brew "doctl"
 brew "helm"
 brew "ipcalc"
 brew "kubernetes-cli"
+brew "kustomize"
 brew "sshuttle"
 brew "terraform"
+brew "terraform-docs"
 brew "tflint"
+brew "tfsec"
 
 # YubiKey
 brew "pinentry-mac"
