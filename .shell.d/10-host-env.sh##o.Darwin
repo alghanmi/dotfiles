@@ -10,3 +10,6 @@ export ANTIGEN_LOG=$ADOTDIR/antigen.log
 
 # Python Variables
 export PYTHONUSERBASE=$HOME/.local
+
+# Hack to get around Yubikey Bug in 2.3.1
+export PATH="/usr/local/opt/gnupg@2.2/bin:$PATH"
