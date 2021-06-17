@@ -71,8 +71,8 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   # Bundles
   antigen bundle git
   antigen bundle golang
-  antigen bundle python
   antigen bundle pip
+  antigen bundle python
   antigen bundle virtualenv
   antigen bundle vscod
 
