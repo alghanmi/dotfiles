@@ -1,3 +1,6 @@
+[credential]
+  helper =
+
 [core]
   excludesfile = ~/.gitignore-global
   editor = vim
