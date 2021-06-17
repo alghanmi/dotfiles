@@ -58,6 +58,12 @@ if [ "$system_type" = "Darwin" ]; then
     defaults write com.googlecode.iterm2 NoSyncNeverRemindPrefsChangesLostForFile_selection -bool true
   fi
 
+  # Static Environment Configuration - zsh
+  echo "# ZSH Brew Configuration" >> "$host_env_static"
+  echo 'FPATH=$(brew --prefix)/share/zsh-completions:$FPATH' >> "$host_env_static"
+  echo "" >> "$host_env_static"
+
+
   # Static Environment Configuration - FZF
   export FZF_HOME=$(brew --prefix fzf)
   $FZF_HOME/install --no-bash --no-fish --completion --key-bindings --no-update-rc
@@ -116,7 +122,7 @@ if [ "$system_type" = "Darwin" ]; then
 fi
 
 # Compdump clean-up
-zsh -c 'rm -f ~/.zcompdump; compinit'
+zsh -c 'rm -f ~/.zcompdump; autoload -Uz compinit; compinit'
 
 # Static Environment Configuration - GOROOT
 if command -v go >/dev/null 2>&1; then
