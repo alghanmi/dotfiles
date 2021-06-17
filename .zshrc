@@ -107,8 +107,8 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
     compinit -C;
   fi
 
-  # Compltion for aliases
-  compdef pyadm=yadm
+  # Completion for Aliases
+  compdef wdyadm=yadm
 fi
 
 # Customize Prompt
