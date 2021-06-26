@@ -81,6 +81,7 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle vagrant
   antigen bundle vault
 
+  antigen bundle Aloxaf/fzf-tab
   antigen bundle rupa/z
   antigen bundle supercrabtree/k
 
