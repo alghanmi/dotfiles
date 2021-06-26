@@ -76,6 +76,7 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle virtualenv
   antigen bundle vscod
 
+  antigen bundle aws
   antigen bundle docker
   antigen bundle terraform
   antigen bundle vagrant
