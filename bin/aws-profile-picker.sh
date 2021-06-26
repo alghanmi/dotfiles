@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # List credentials and regions of interest
-roles=($(cat ~/.aws/credentials | grep "^\[" | sed "s/\[\(.*\)\]/\1/" | sort))
-regions=(ca-central-1 us-east-1 us-east-2 us-west-2 eu-central-1 eu-west-1)
+roles=($(cat ~/.aws/config | grep -v '^\[okta2aws\]\|^\[sso-cust\]'| grep "^\[" | sed "s/\[profile \(.*\)\]/\1/" | sort))
+regions=(us-west-2 us-east-2 eu-central-1 )
 
 function choose_from_list() {
   items=($@)
