@@ -60,7 +60,7 @@ if [ "$system_type" = "Darwin" ]; then
 
   # Static Environment Configuration - zsh
   echo "# ZSH Brew Configuration" >> "$host_env_static"
-  echo 'FPATH=$(brew --prefix)/share/zsh-completions:$FPATH' >> "$host_env_static"
+  echo 'FPATH='"$(brew --prefix)"'/share/zsh-completions:$FPATH' >> "$host_env_static"
   echo "" >> "$host_env_static"
 
 
