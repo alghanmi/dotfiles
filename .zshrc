@@ -62,7 +62,19 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   # Load the oh-my-zsh's library.
   antigen use oh-my-zsh
 
+  # Completion; use cache if updated within 24h
+  autoload -Uz compinit
+  if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' $HOME/.zcompdump) ]; then
+    compinit
+  else
+    compinit -C
+  fi
+
+  # Completion for Aliases
+  compdef wdyadm=yadm
+
   # Zsh completion and highlighting
+  antigen bundle Aloxaf/fzf-tab # load before zsh-autosuggestions or fast-syntax-highlighting
   antigen bundle zsh-users/zsh-syntax-highlighting # load before zsh-history-substring-search
   antigen bundle zsh-users/zsh-history-substring-search
   antigen bundle zsh-users/zsh-autosuggestions
@@ -82,7 +94,6 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   antigen bundle vagrant
   antigen bundle vault
 
-  antigen bundle Aloxaf/fzf-tab
   antigen bundle rupa/z
   antigen bundle supercrabtree/k
 
@@ -100,17 +111,6 @@ if [ -f $ZSH_ANTIGEN_HOME/antigen.zsh ]; then
   # Setup Solarized colors (run after `antigen apply`)
   export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239'
   zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}" # Add graphical menu for zsh-completions
-
-  # Completion; use cache if updated within 24h
-  autoload -Uz compinit
-  if [[ -n $HOME/.zcompdump(#qN.mh+24) ]]; then
-    compinit -d $HOME/.zcompdump;
-  else
-    compinit -C;
-  fi
-
-  # Completion for Aliases
-  compdef wdyadm=yadm
 fi
 
 # Customize Prompt
