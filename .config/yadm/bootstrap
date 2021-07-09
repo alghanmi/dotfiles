@@ -117,9 +117,33 @@ if [ "$system_type" = "Darwin" ]; then
 
   # Ensure proper permissions for ZSH shared directories
   # Use `compaudit` to verify
-  chmod 755 /usr/local/share/zsh
-  chmod 755 /usr/local/share/zsh/site-functions
+  chmod -R go-w "$(brew --prefix)/share"
 fi
+
+
+# ZSH Configuration
+mkdir -p "$HOME/.zinit"
+if [ ! -d "$HOME/.zinit/bin" ]; then
+  echo "Bootstrap zinit"
+  git clone https://github.com/zdharma/zinit.git "$HOME/.zinit/bin"
+fi
+
+# ZSH Upgrades
+echo "Upgrade zinit"
+zsh -c '. $HOME/.zshrc && zinit self-update'
+echo "Upgrade zsh plugins"
+zsh -c '. $HOME/.zshrc && zinit update --parallel'
+
+
+# # Upgrade antigen plugins if needed
+# echo "Upgrading Antigen plugins"
+# if [ -f "$HOME/.antigen/antigen.log" ]; then
+#   mv "$HOME/.antigen/antigen.log" "$HOME/.antigen/antigen.$(date +'%Y%m%d-%H%M%S').log"
+# fi
+# zsh -c '. $HOME/.zshrc && antigen update'
+
+# echo "Antigen Reset"
+# zsh -c '. $HOME/.zshrc && antigen reset'
 
 # Compdump clean-up
 zsh -c 'rm -f ~/.zcompdump; autoload -Uz compinit; compinit'
@@ -135,16 +159,6 @@ fi
 # Create SSH configuration directory
 mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
 chmod 700 "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
-
-# Upgrade antigen plugins if needed
-echo "Upgrading Antigen plugins"
-if [ -f "$HOME/.antigen/antigen.log" ]; then
-  mv "$HOME/.antigen/antigen.log" "$HOME/.antigen/antigen.$(date +'%Y%m%d-%H%M%S').log"
-fi
-zsh -c '. $HOME/.zshrc && antigen update'
-
-echo "Antigen Reset"
-zsh -c '. $HOME/.zshrc && antigen reset'
 
 # Bootstrap vim
 if command -v vim >/dev/null 2>&1; then
@@ -181,6 +195,14 @@ if command -v go >/dev/null 2>&1; then
     mkdir $HOME/go
     mkdir -p $HOME/go/bin $HOME/go/pkg $HOME/go/src
   fi
+fi
+
+# Bootstrap Ruby
+if command -v rbenv >/dev/null 2>&1; then
+  echo "Bootstrapping Ruby using rbenv"
+  echo "# ruby - rbenv configuration" >> "$host_env_static"
+  rbenv init - >> "$host_env_static"
+  echo "" >> "$host_env_static"
 fi
 
 # Vagrant Plugins

@@ -10,6 +10,9 @@ export VISUAL=$EDITOR
 export PAGER=less
 export LESS=-FRSX
 
+# Locale
+export LC_ALL=en_US.UTF-8
+
 # Terraform
 #export TF_LOG=DEBUG
 export TF_LOG_PATH="$HOME/.terraform.d/terraform.log"
