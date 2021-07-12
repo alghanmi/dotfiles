@@ -91,12 +91,19 @@ zinit wait lucid for                           \
   light-mode Aloxaf/fzf-tab                    \
   light-mode zdharma/history-search-multi-word 
 
-# zstyle :plugin:history-search-multi-word reset-prompt-protect 1 # Enable context-based search
-
 # Oh My ZSH Plugins and Libraries
 zinit for \
   OMZP::colored-man-pages \
   OMZL::termsupport.zsh
+
+
+
+# Plugin options
+zstyle :plugin:history-search-multi-word reset-prompt-protect 1 # Enable context-based search
+zstyle ':completion:*:git-checkout:*' sort false                # disable sort when completing `git checkout`
+zstyle ':completion:*:descriptions' format '[%d]'               # set descriptions format to enable group support
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}           # set list-colors to enable filename colorizing
+zstyle ':fzf-tab:*' switch-group ',' '.'                        # switch group using `,` and `.`
 
 # Load theme
 zinit light romkatv/powerlevel10k
