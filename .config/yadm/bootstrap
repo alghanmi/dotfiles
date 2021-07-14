@@ -201,7 +201,7 @@ fi
 if command -v rbenv >/dev/null 2>&1; then
   echo "Bootstrapping Ruby using rbenv"
   echo "# ruby - rbenv configuration" >> "$host_env_static"
-  rbenv init - >> "$host_env_static"
+  rbenv init - zsh >> "$host_env_static"
   echo "" >> "$host_env_static"
 fi
 
