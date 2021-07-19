@@ -58,6 +58,12 @@ alias myipdns='dig +short myip.opendns.com @resolver1.opendns.com'
 alias awsenv='source ~/bin/aws-profile-picker.sh'
 alias awsroles='cat ~/.aws/credentials| grep "^\[" | sed "s/\[\(.*\)\]/\1/" | sort'
 
+# Terraform
+alias tfp='terraform plan'
+alias tfa='terraform apply'
+alias tfi='terraform init'
+alias tff='terraform fmt'
+
 # Mount remote fs `rmnt <remote> <local>`
 alias rmnt='sshfs -o uid=$(id -u) -o gid=$(id -g)'
 
