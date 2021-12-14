@@ -78,18 +78,18 @@ fi
 compdef wdyadm=yadm
 
 # Fish-like syntax highlighting 
-zinit wait lucid light-mode for          \
-  atinit"zicompinit; zicdreplay"         \
-      zdharma/fast-syntax-highlighting   \
-  atload"_zsh_autosuggest_start"         \
-      zsh-users/zsh-autosuggestions      \
-  blockf atpull'zinit creinstall -q .'   \
+zinit wait lucid light-mode for                    \
+  atinit"zicompinit; zicdreplay"                   \
+      zdharma-continuum/fast-syntax-highlighting   \
+  atload"_zsh_autosuggest_start"                   \
+      zsh-users/zsh-autosuggestions                \
+  blockf atpull'zinit creinstall -q .'             \
       zsh-users/zsh-completions
 
 # Commandline Search
-zinit wait lucid for                           \
-  light-mode Aloxaf/fzf-tab                    \
-  light-mode zdharma/history-search-multi-word 
+zinit wait lucid for                                      \
+  light-mode Aloxaf/fzf-tab                               \
+  light-mode zdharma-continuum/history-search-multi-word
 
 # Oh My ZSH Plugins and Libraries
 zinit for \

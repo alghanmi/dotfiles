@@ -125,7 +125,7 @@ fi
 mkdir -p "$HOME/.zinit"
 if [ ! -d "$HOME/.zinit/bin" ]; then
   echo "Bootstrap zinit"
-  git clone https://github.com/zdharma/zinit.git "$HOME/.zinit/bin"
+  git clone https://github.com/zdharma-continuum/zinit.git "$HOME/.zinit/bin"
 fi
 
 # ZSH Upgrades
