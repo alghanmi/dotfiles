@@ -51,13 +51,13 @@ bindkey -e vi
 ##
 
 # Refresh gpg-agent tty in case user switches into an X session
-export GPG_TTY=$(tty)
-eval "$(gpgconf --launch gpg-agent)"
-gpg-connect-agent updatestartuptty /bye >/dev/null
+#export GPG_TTY=$(tty)
+#eval "$(gpgconf --launch --create-socketdir gpg-agent)"
+#gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # Enable SSH Agent support in GPG Agent
-unset SSH_AGENT_PID
-export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+#unset SSH_AGENT_PID
+#export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 ##
 ## ZSH Plugins and Scripts
@@ -68,7 +68,7 @@ source $HOME/.zinit/bin/zinit.zsh
 
 # Completion; use cache if updated within 24h
 autoload -Uz compinit
-if [ $(date +'%j') != $(/usr/bin/stat -f '%Sm' -t '%j' $HOME/.zcompdump) ]; then
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
   compinit
 else
   compinit -C
