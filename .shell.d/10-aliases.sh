@@ -40,7 +40,7 @@ alias egrep='egrep --color=auto'
 alias ip='ip -c'
 
 # GPG Aliases
-alias gpg-reload='echo KILLAGENT | gpg-connect-agent && gpg-connect-agent /bye; gpgconf --kill gpg-agent'
+alias gpg-reload='gpg-connect-agent reloadagent /bye'
 
 # Alias vi to vim
 alias vi='vim'
