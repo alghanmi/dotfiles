@@ -57,7 +57,6 @@ cask "logitech-options"
 cask "signal"
 
 # Dev Tools
-brew "brew-pip"
 brew "gcc"
 brew "git-lfs"
 brew "go"
@@ -113,3 +112,4 @@ mas "com.evernote.Evernote", id: 406056744
 mas "com.tinyspeck.slackmacgap", id: 803453959
 mas "com.todoist.mac.Todoist", id: 585829637
 mas "com.yubico.YKPersonalization", id: 638161122
+mas "tailscale", id: 1475387142
