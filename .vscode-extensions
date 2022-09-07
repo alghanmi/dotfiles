@@ -1,7 +1,7 @@
 bbenoist.vagrant
 bierner.markdown-mermaid
-coenraads.bracket-pair-colorizer-2
 davidanson.vscode-markdownlint
+docsmsft.docs-markdown
 eamodio.gitlens
 equinusocio.vsc-material-theme
 equinusocio.vsc-material-theme-icons
@@ -9,6 +9,7 @@ esbenp.prettier-vscode
 formulahendry.code-runner
 golang.go
 hashicorp.terraform
+heptio.jsonnet
 misogi.ruby-rubocop
 ms-azuretools.vscode-docker
 ms-python.python
@@ -16,6 +17,7 @@ ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode-remote.vscode-remote-extensionpack
+ms-vscode.makefile-tools
 rebornix.ruby
 redhat.java
 redhat.vscode-yaml
