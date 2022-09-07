@@ -1,0 +1,44 @@
+##
+## Sources:
+##   - https://gitlab.com/muttmua/mutt/-/wikis/MuttFaq/Maildir
+##   - https://wiki.debian.org/Mutt
+##   - http://www.elho.net/mutt/maildir/
+##
+
+##
+## Maildir Configuration
+##
+set mbox_type=Maildir
+
+set spoolfile="~/Maildir/"
+set folder="~/Maildir/"
+
+##
+## Setup solders and mailboxes
+##
+set mask=".*"    # the default mask hides dotfiles and maildirs are dotfiles now.
+# set mask="!^\.[^.]"  # this line intentionally commented out
+set record="+.Sent"
+set postponed="+.Drafts"
+
+mailboxes ! + `\
+for file in ~/Maildir/.*; do \
+  box=$(basename "$file"); \
+  if [ ! "$box" = '.' -a ! "$box" = '..' -a ! "$box" = '.customflags' \
+      -a ! "$box" = '.subscriptions' ]; then \
+    echo -n "\"+$box\" "; \
+  fi; \
+done`
+
+
+##
+## Marcos to display folder list when changing maildir folders
+##
+macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
+
+##
+## Macros to display folder list when copying/moving messages
+##
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
