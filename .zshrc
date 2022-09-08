@@ -51,13 +51,7 @@ bindkey -e vi
 ##
 
 # Refresh gpg-agent tty in case user switches into an X session
-#export GPG_TTY=$(tty)
-#eval "$(gpgconf --launch --create-socketdir gpg-agent)"
-#gpg-connect-agent updatestartuptty /bye >/dev/null
-
-# Enable SSH Agent support in GPG Agent
-#unset SSH_AGENT_PID
-#export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+export GPG_TTY=$(tty)
 
 ##
 ## ZSH Plugins and Scripts

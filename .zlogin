@@ -1,13 +1,15 @@
 # GPG and SSH Agent Configuration
-#export GPG_TTY=$(tty)
 #eval "$(gpgconf --launch gpg-agent)"
 #export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
-if [[ -z ${SSH_CONNECTION} ]] && [[ ! -S "$(gpgconf --list-dir agent-socket)" ]]; then
-	export GPG_TTY=$(tty)
-	eval "$(gpgconf --launch gpg-agent)"
+if [[ -z ${SSH_CONNECTION} ]]; then
 	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
+#if [[ -z ${SSH_CONNECTION} ]] && [[ ! -S "$(gpgconf --list-dir agent-socket)" ]]; then
+#	export GPG_TTY=$(tty)
+#	eval "$(gpgconf --launch gpg-agent)"
+#	export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+#fi
 
 
 
