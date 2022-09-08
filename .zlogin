@@ -1,3 +1,9 @@
+# GPG and SSH Agent Configuration
+export GPG_TTY=$(tty)
+eval "$(gpgconf --launch gpg-agent)"
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+
+# ZSH zcompile for speed-up
 {
   # zcompile the completion cache for siginificant speedup
   zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
