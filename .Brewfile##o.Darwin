@@ -55,6 +55,7 @@ cask "gitter"
 cask "google-chrome"
 cask "handbrake"
 cask "logitech-options"
+cask "obsidian"
 cask "signal"
 
 # Dev Tools
@@ -72,6 +73,7 @@ brew "yq"
 # Infra Tools
 brew "ansible"
 brew "awscli"
+brew "checkov"
 brew "doctl"
 brew "helm"
 brew "ipcalc"
