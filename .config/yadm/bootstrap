@@ -135,16 +135,6 @@ echo "Upgrade zsh plugins"
 zsh -c '. $HOME/.zshrc && zinit update --parallel'
 
 
-# # Upgrade antigen plugins if needed
-# echo "Upgrading Antigen plugins"
-# if [ -f "$HOME/.antigen/antigen.log" ]; then
-#   mv "$HOME/.antigen/antigen.log" "$HOME/.antigen/antigen.$(date +'%Y%m%d-%H%M%S').log"
-# fi
-# zsh -c '. $HOME/.zshrc && antigen update'
-
-# echo "Antigen Reset"
-# zsh -c '. $HOME/.zshrc && antigen reset'
-
 # Compdump clean-up
 zsh -c 'rm -f ~/.zcompdump; autoload -Uz compinit; compinit'
 
