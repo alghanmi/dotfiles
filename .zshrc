@@ -87,10 +87,7 @@ zinit wait lucid for                                      \
 
 # Oh My ZSH Plugins and Libraries
 zinit for \
-  OMZP::colored-man-pages \
-  OMZL::termsupport.zsh
-
-
+  OMZP::colored-man-pages
 
 # Plugin options
 zstyle :plugin:history-search-multi-word reset-prompt-protect 1 # Enable context-based search
