@@ -74,6 +74,8 @@ alias ssh-kill-cm-root='sudo find ~/.ssh/sockets -type s -name "root-*" -exec ss
 # Docker Aliases
 alias docker-clean='docker ps -a --format "{{ .ID }}" | xargs docker rm; docker images --filter "dangling=true" --format "{{ .ID }}" | xargs docker rmi'
 
+alias yadm-code='cd $HOME && yadm list -a | xargs code --new-window'
+
 ## Functions (used as aliases)
 # SSH without using key
 function ssh_nokey() { ssh -o PreferredAuthentications=keyboard-interactive,password -o PubkeyAuthentication=no "$@" ;}

@@ -1,3 +1,4 @@
+#zmodload zsh/zprof
 ##
 ## Powerlevel10k instant prompt.
 ## 
@@ -6,11 +7,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ##
+## Customizations
+##
+export DISABLE_NVM_LOADING=1
+
+##
 ## Shell Configuration Files
 ##
-for filename in $(find ~/.shell.d -name '*.sh' | sort); do
-  source $filename
-done
+for filename in $(find ~/.shell.d -name '*.sh' | sort); do source $filename; done
 
 ##
 ## ZSH Configuration
@@ -104,3 +108,4 @@ zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}" # Add graphical menu fo
 
 # Customize Prompt
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#zprof
