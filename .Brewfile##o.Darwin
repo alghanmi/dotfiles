@@ -1,0 +1,69 @@
+# Brew Taps
+tap "homebrew/bundle"
+
+# Shell essentials
+brew "coreutils"
+brew "curl"
+brew "fzf"
+brew "git-lfs"
+brew "git"
+brew "gnu-sed"
+brew "gnupg"
+brew "htop"
+brew "jq"
+brew "pipx"
+brew "reattach-to-user-namespace"
+brew "ripgrep"
+brew "tmux"
+brew "tree"
+brew "watch"
+brew "wget"
+brew "yadm"
+brew "yamlfmt"
+brew "yamllint"
+brew "yq"
+
+# Development
+brew "go"
+
+# Dev Tools
+brew "gh"
+brew "pre-commit"
+brew "semtag"
+cask "intellij-idea"
+
+# Infra Tools
+brew "argocd"
+brew "awscli"
+brew "checkov"
+brew "helm"
+brew "ipcalc"
+brew "kind"
+brew "kubernetes-cli"
+brew "kustomize"
+brew "sshuttle"
+brew "tcptraceroute"
+brew "tektoncd-cli"
+brew "terraform-docs"
+brew "tfenv"
+brew "tflint"
+brew "tfsec"
+cask "docker"
+cask "session-manager-plugin"
+
+# YubiKey
+brew "pinentry-mac"
+brew "ykman"
+brew "ykpers"
+
+# Desktop Application
+brew "mpv"
+cask "balenaetcher"
+cask "bitwarden"
+cask "firefox"
+cask "font-inconsolata-go-nerd-font"
+cask "iterm2"
+cask "logi-options+"
+cask "obsidian"
+cask "todoist"
+cask "visual-studio-code"

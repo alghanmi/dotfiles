@@ -1,0 +1,32 @@
+[alias]
+  ls = log --pretty=format:'%C(yellow)%h%C(bold yellow)%d - %C(reset)%s%C(reset) - %C(blue)[%an] %C(green)(%cr)%C(reset)' --decorate
+  ll = log --pretty=format:'%C(yellow)%h%C(bold yellow)%d%C(reset) - %s%C(reset) - %C(blue)[%an] %C(green)(%ad)%C(reset)' --decorate --numstat
+  hist = log --pretty=format:'%C(yellow)%h%C(bold yellow)%d%C(reset) - %s%C(reset) - %C(blue)[%an] %C(green)(%ad)%C(reset)' --abbrev-commit --graph --color --full-history --date-order --date=default
+  last = --no-pager log -1 --oneline --color
+  diff-branches = "!f() { git log --left-right --graph --cherry-pick --oneline \"$1\"..\"$2\"; }; f"
+  delete-merged = !git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d
+  delete-gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch --delete --force"
+
+[core]
+  excludesfile = ~/.gitignore-global
+  editor = vim
+
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+
+[pull]
+  rebase = false
+
+[includeIf "gitdir:~/github/**"]
+  path = ~/.gitconfig.d/local-user.gitconfig
+
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+  path = ~/.gitconfig.d/local-user.gitconfig
+
+[includeIf "hasconfig:remote.*.url:https://github.com/**"]
+  path = ~/.gitconfig.d/local-user.gitconfig
+
+# Additional Configuration [Optional]
+[include]
+  path = ~/.gitconfig.d/local-custom.gitconfig

@@ -1,0 +1,57 @@
+##
+## Editor Temporary Files
+##
+.*.sw[a-z]
+*~
+\#*\#
+
+
+##
+## Compiled source
+##
+*.class
+*.dll
+*.exe
+*.o
+*.pyc
+*.so
+
+##
+## IDE Files
+##
+.settings/
+*.classpath
+target/
+.idea/
+*.iml
+
+##
+## Packages
+##
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+
+##
+## Logs
+##
+log?/
+npm-debug.log
+
+
+##
+## OS generated files
+##
+.DS_Store*
+.Trash
+.Trashes
+Desktop.ini
+ehthumbs.db
+Icon?
+Thumbs.db

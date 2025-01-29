@@ -1,0 +1,7 @@
+# Copy command configuration
+bind-key -T copy-mode-vi y                 send-keys -X copy-pipe "reattach-to-user-namespace pbcopy"
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe "reattach-to-user-namespace pbcopy" \; display-message "highlighted selection copied.."
+
+# Enable PageUp and PageDown to enter copy-mode
+bind-key -T root  PageUp   copy-mode
+bind-key -T root  PageDown copy-mode
