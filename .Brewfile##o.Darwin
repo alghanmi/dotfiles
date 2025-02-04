@@ -48,6 +48,7 @@ brew "terraform-docs"
 brew "tfenv"
 brew "tflint"
 brew "tfsec"
+brew "whois"
 cask "docker"
 cask "session-manager-plugin"
 
