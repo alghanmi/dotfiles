@@ -1,0 +1,47 @@
+/* ~/Library/KeyBindings/DefaultKeyBinding.Dict
+
+Key Modifiers
+-------------
+^ : Ctrl
+$ : Shift
+~ : Option (Alt)
+@ : Command (Apple)
+# : Numeric Keypad
+
+Non-Printable Key Codes
+-----------------------
+## Standard
+Up Arrow:     \UF700        Backspace:    \U0008        F1:           \UF704
+Down Arrow:   \UF701        Tab:          \U0009        F2:           \UF705
+Left Arrow:   \UF702        Escape:       \U001B        F3:           \UF706
+Right Arrow:  \UF703        Enter:        \U000A        ...
+Insert:       \UF727        Page Up:      \UF72C
+Delete:       \UF728        Page Down:    \UF72D
+Home:         \UF729        Print Screen: \UF72E
+End:          \UF72B        Scroll Lock:  \UF72F
+Break:        \UF732        Pause:        \UF730
+SysReq:       \UF731        Menu:         \UF735
+Help:         \UF746
+
+## OS X
+delete:       \U007F
+*/
+
+{
+  "\UF728"   = "deleteForward:";                                /* Del */
+
+  "\UF729"   = "moveToBeginningOfLine:";                        /* Home */
+  "\UF72B"   = "moveToEndOfLine:";                              /* End */
+
+  "^\UF729"  = "moveToBeginningOfDocument:";                    /* Ctrl + Home */
+  "^\UF72B"  = "moveToEndOfDocument:";                          /* Ctrl + End */
+
+  "$\UF729"  = "moveToBeginningOfLineAndModifySelection:";      /* Shift + Home */
+  "$\UF72B"  = "moveToEndOfLineAndModifySelection:";            /* Shift + End */
+
+  "$^\UF729" = "moveToBeginningOfDocumentAndModifySelection:";  /* Shift + Ctrl + Home */
+  "$^\UF72B" = "moveToEndOfDocumentAndModifySelection:";        /* Shift + Ctrl + End */
+
+  "\UF72C"   = "pageUp:";                                       /* PageUp */
+  "\UF72D"   = "pageDown:";                                     /* PageDown */
+}
