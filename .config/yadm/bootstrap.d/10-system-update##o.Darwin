@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Install Homebrew
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Installing homebrew"
+  /bin/bash -c "$(curl --fail --silent --show-error --location https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Install XCode Command Line Tools (CLT)
+if ! command -v xcode-select -p >/dev/null 2>&1; then
+  echo "XCode Command Line Tools (CLT)"
+  xcode-select --install &> /dev/null
+fi
+
+# Ensure your MacOS is up to date
+echo "Updating MacOS"
+softwareupdate --all --install --force
+
+# Install/update brew bundle
+if [ -f "$HOME/.Brewfile" ]; then
+  echo "Updating homebrew bundle"
+  brew update
+  brew doctor && brew upgrade  && brew cleanup --prune=14
+  brew bundle --file="$HOME/.Brewfile"
+fi
+
+# Update Brew Shell Environment
+zsh -c '/opt/homebrew/bin/brew shellenv > ${HOME}/.brewrc'
