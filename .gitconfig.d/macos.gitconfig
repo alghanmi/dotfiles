@@ -1,2 +1,2 @@
-[credential "https://github.com"]
+[credential]
   helper = osxkeychain

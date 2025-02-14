@@ -17,14 +17,20 @@
 [credential]
   helper =
 
-[include]
-  path = ~/.gitconfig.local
+[includeIf "gitdir:/Users"]
+  path = ~/.gitconfig.d/macos.gitconfig
+
+[includeIf "gitdir:/home"]
+  path = ~/.gitconfig.d/linux.gitconfig
 
 [include]
-  path = ~/.gitconfig.work
+  path = ~/.gitconfig.d/local.gitconfig
+
+[include]
+  path = ~/.gitconfig.d/work.gitconfig
 
 [init]
-	defaultBranch = main
+  defaultBranch = main
 
 [merge]
   tool = vimdiff
