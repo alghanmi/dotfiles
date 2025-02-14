@@ -6,4 +6,4 @@ export FZF_HOME=$HOME/tools/fzf
 export PATH=$PATH:$FZF_HOME/bin
 
 # GRC Configuration
-source /etc/grc.zsh
+[ -f /etc/grc.zsh ] && source /etc/grc.zsh
