@@ -54,10 +54,6 @@ alias ssl_nmap='nmap --script ssl-cert,ssl-enum-ciphers -p 443 '
 alias myip='curl ifconfig.co'
 alias myipdns='dig +short myip.opendns.com @resolver1.opendns.com'
 
-# AWS Helpers
-alias awsenv='source ~/.local/bin/aws-profile-picker.sh'
-alias awsroles='cat ~/.aws/credentials| grep "^\[" | sed "s/\[\(.*\)\]/\1/" | sort'
-
 # Terraform
 alias tfp='terraform plan'
 alias tfa='terraform apply'

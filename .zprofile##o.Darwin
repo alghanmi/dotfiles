@@ -1,0 +1,23 @@
+##
+## zprofile
+##
+##  Using zprofile because MacOS sources /etc/zprofile after zshenv which overrides and environment variables set in zshenv including $PATH.
+##  The /usr/libexec/path_helper script is called in /etc/zprofile and it reevaluates the path removing and changes made in zshenv. Therefore,
+##  For the sake of MacOS, the PATH will need to updated in the user's zprofile script.
+##  Sources:
+##    * https://0xmachos.com/2021-05-13-zsh-path-macos/
+##    * https://www.softec.lu/site/DevelopersCorner/MasteringThePathHelper
+##
+
+# Homebrew Shell Environment
+# Obtained from running `/opt/homebrew/bin/brew shellenv`
+export HOMEBREW_PREFIX="/opt/homebrew";
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+export HOMEBREW_REPOSITORY="/opt/homebrew";
+fpath[1,0]="/opt/homebrew/share/zsh/site-functions";
+[ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}";
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+
+
+# Homebrew Path
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"

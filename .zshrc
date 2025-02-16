@@ -1,15 +1,11 @@
 #zmodload zsh/zprof
+
 ##
 ## Powerlevel10k instant prompt.
-## 
+##
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-
-##
-## Customizations
-##
-export DISABLE_NVM_LOADING=1
 
 ##
 ## Shell Configuration Files
@@ -54,6 +50,10 @@ export HISTORY_IGNORE="(ls|bg|fg|pwd|exit|cd ..)"
 
 # Set vi mode in ZSH
 bindkey -e vi
+# bindkey "^[[H" beginning-of-line
+# bindkey "^[[F" end-of-line
+# bindkey '\e[H' beginning-of-line
+# bindkey '\e[F' end-of-line
 
 ##
 ## GnuPG and SSH
@@ -72,14 +72,6 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # FZF
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
-
-# Completion; use cache if updated within 24h
-autoload -Uz compinit
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
-  compinit
-else
-  compinit -C
-fi
 
 # Fish-like syntax highlighting 
 zinit wait lucid light-mode for                    \
@@ -111,6 +103,19 @@ zinit light romkatv/powerlevel10k
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239'
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}" # Add graphical menu for zsh-completions
+
+# Completion; use cache if updated within 24h
+# Using zinit's compinit optimization
+# https://github.com/zdharma-continuum/zinit?tab=readme-ov-file#calling-compinit-without-turbo-mode
+autoload -Uz compinit
+compinit
+zinit cdreplay -q
+
+# if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+#   compinit
+# else
+#   compinit -C
+# fi
 
 # Customize Prompt
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
