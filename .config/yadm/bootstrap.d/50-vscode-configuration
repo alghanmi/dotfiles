@@ -3,7 +3,7 @@
 set -e
 
 # Install Visual Studio Code Extensions
-if ! command -v code --version >/dev/null 2>&1; then
+if command -v code --version >/dev/null 2>&1; then
   echo "Install/Update VS Code Extensions"
   cat ${HOME}/.config/vscode/extensions | xargs -n 1 code --force --install-extension 
 fi
