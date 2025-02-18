@@ -22,6 +22,7 @@ brew "yadm"
 brew "yamlfmt"
 brew "yamllint"
 brew "yq"
+brew "zsh-completions"
 
 # Development
 brew "go"
