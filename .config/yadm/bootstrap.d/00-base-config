@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+source ${HOME}/.zshenv
+
+# Create Base Directories
+mkdir -p ${XDG_CACHE_HOME} ${XDG_CONFIG_HOME} ${XDG_DATA_HOME} ${XDG_STATE_HOME}
+
+# Local bin directory
+mkdir -p $HOME/.local/bin
+
+# Create SSH configuration directory
+mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
+chmod 700 "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"

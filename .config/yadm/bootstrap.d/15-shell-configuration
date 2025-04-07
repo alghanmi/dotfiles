@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Read System Environment Variables
+source ${HOME}/.zshenv
+[ -r "${ZDOTDIR}/.zprofile" ] && source ${ZDOTDIR}/.zprofile
+
+#ZIM:FW Configuration
+if [[ ! -r "${ZIM_HOME}/zimfw.zsh" ]]; then 
+  curl --fail --location --create-dirs --silent --output ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  zsh -c 'source ${ZIM_HOME}/zimfw.zsh init -q'
+  zsh -c 'source ${ZIM_HOME}/init.zsh'
+else
+  zsh -c '. ${ZDOTDIR}/.zshrc && zimfw install'
+  zsh -c '. ${ZDOTDIR}/.zshrc && zimfw update && zimfw upgrade'
+fi
+
+# Bootstrap vim
+if command -v vim >/dev/null 2>&1; then
+  # Download the latest vim-plug
+  curl --fail --location --create-dirs --silent --output $HOME/.vim/autoload/plug.vim \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+  # Install all plugins
+  echo "Bootstraping Vim"
+  vim '+PlugUpdate' '+PlugClean!' '+PlugUpdate' '+qall'
+fi
+
+# Bootstrap tmux
+if command -v tmux >/dev/null 2>&1; then
+  echo "Bootstrapping tmux"
+  TMUX_PLUGINS_HOME=${XDG_CONFIG_HOME}/tmux/plugins
+  if [ ! -d "${TMUX_PLUGINS_HOME}/tpm" ]; then
+    # installing tmux-plugin-manager and plugins
+    mkdir ${TMUX_PLUGINS_HOME}
+    git clone https://github.com/tmux-plugins/tpm ${TMUX_PLUGINS_HOME}/tpm
+    ${TMUX_PLUGINS_HOME}/tpm/bin/install_plugins
+  else
+    # updating tpm and plugins
+    pushd ${TMUX_PLUGINS_HOME}/tpm
+    git pull -p
+    popd
+    ${TMUX_PLUGINS_HOME}/tpm/bin/update_plugins all
+  fi
+fi
+
+
+# FZF Configuration
+$(brew --prefix fzf)/install --xdg --key-bindings --completion --no-update-rc --no-bash --no-fish
