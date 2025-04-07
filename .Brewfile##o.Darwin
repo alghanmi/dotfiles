@@ -4,6 +4,7 @@ tap "homebrew/bundle"
 # Shell essentials
 brew "coreutils"
 brew "curl"
+brew "eza"
 brew "fzf"
 brew "git-lfs"
 brew "git"
@@ -33,6 +34,8 @@ brew "pre-commit"
 brew "semtag"
 
 # Infra Tools
+brew "ansible-lint"
+brew "ansible"
 brew "argocd"
 brew "awscli"
 brew "checkov"

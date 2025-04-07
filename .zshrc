@@ -16,21 +16,24 @@ for filename in $(find ~/.shell.d -name '*.sh' | sort); do source $filename; don
 ## ZSH Configuration
 ##
 
-# ZSH Options
-setopt autocd
-setopt clobber
-setopt complete_aliases
-setopt correct_all
-setopt extended_glob
-setopt interactive_comments
-setopt nonomatch
-setopt pushd_ignore_dups
+# ZSH Environment Options
+setopt AUTO_CD
+setopt AUTO_PUSHD
+setopt CLOBBER
+setopt COMPLETE_ALIASES
+setopt CORRECT_ALL
+setopt EXTENDED_GLOB
+setopt INTERACTIVE_COMMENTS
+setopt NO_NOMATCH
+setopt PUSHD_IGNORE_DUPS
 
-DISABLE_MAGIC_FUNCTIONS=true
+export DISABLE_MAGIC_FUNCTIONS=true
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239'
+bindkey -e vi
 
 # ZSH History Options
-HISTSIZE=500000
-SAVEHIST=500000
+HISTSIZE=1000000
+SAVEHIST=1000000
 HISTFILE=${HISTFILE:-$ZDOTDIR/.zsh_history}
 setopt EXTENDED_HISTORY          # Write the history file in the ':start:elapsed;command' format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
@@ -45,15 +48,7 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 setopt APPEND_HISTORY            # append to history file
 setopt HIST_NO_STORE             # Don't store history commands
 
-# Ignore interactive commands from history
-export HISTORY_IGNORE="(ls|bg|fg|pwd|exit|cd ..)"
-
-# Set vi mode in ZSH
-bindkey -e vi
-# bindkey "^[[H" beginning-of-line
-# bindkey "^[[F" end-of-line
-# bindkey '\e[H' beginning-of-line
-# bindkey '\e[F' end-of-line
+export HISTORY_IGNORE="(ls|bg|fg|pwd|exit|cd ..)" # Ignore interactive commands from history
 
 ##
 ## GnuPG and SSH
@@ -63,60 +58,37 @@ bindkey -e vi
 export GPG_TTY=$(tty)
 
 ##
-## ZSH Plugins and Scripts
+## ZSH Frameworks and Modules
 ##
 
-# Load Zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ -f "${ZINIT_HOME}/zinit.zsh" ] && source "${ZINIT_HOME}/zinit.zsh"
+# Load ZIM:FW
+zstyle ':zim:zmodule' use 'degit'
+zstyle ':zim' 'disable-version-check' 'false'
+[ -r "${ZIM_HOME}/zimfw.zsh" ] && source ${ZIM_HOME}/init.zsh
 
 # FZF
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
-# Fish-like syntax highlighting 
-zinit wait lucid light-mode for                    \
-  atinit"zicompinit; zicdreplay"                   \
-      zdharma-continuum/fast-syntax-highlighting   \
-  atload"_zsh_autosuggest_start"                   \
-      zsh-users/zsh-autosuggestions                \
-  blockf atpull'zinit creinstall -q .'             \
-      zsh-users/zsh-completions
+# Aloxaf/fzf-tab module option
+zstyle ':completion:*:descriptions' format '[%d]'                    # set descriptions format to enable group support
+zstyle ':completion:*:git-checkout:*' sort false                     # disable sort when completing `git checkout`
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}                # set list-colors to enable filename colorizing
+zstyle ':completion:*' menu no                                       # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup                       # make full use of TMUX's "popup" feature. Requires tmux >= 3.2
+zstyle ':fzf-tab:*' switch-group ',' '.'                             # switch group using `,` and `.`
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'   # preview directory's content with eza when completing cd
+zstyle ':fzf-tab:complete:cd:*' popup-pad 30 0                       # Use pop-up pads
+zstyle ':fzf-tab:*' popup-min-size 50 8                              # adjust pop-up minimum size
 
-# Commandline Search
-zinit wait lucid for                                      \
-  light-mode Aloxaf/fzf-tab                               \
-  light-mode zdharma-continuum/history-search-multi-word
+# history-search-multi-word module options
+zstyle ':plugin:history-search-multi-word' reset-prompt-protect 1  # Enable context-based search
+zstyle ':plugin:history-search-multi-word' clear-on-cancel 'yes'   # Whether pressing Ctrl-C or ESC should clear entered query
 
-# Oh My ZSH Plugins and Libraries
-zinit for \
-  OMZP::colored-man-pages
+export SDKMAN_DIR=${HOMEBREW_PREFIX}/opt/sdkman-cli/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
-# Plugin options
-zstyle :plugin:history-search-multi-word reset-prompt-protect 1 # Enable context-based search
-zstyle ':completion:*:git-checkout:*' sort false                # disable sort when completing `git checkout`
-zstyle ':completion:*:descriptions' format '[%d]'               # set descriptions format to enable group support
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}           # set list-colors to enable filename colorizing
-zstyle ':fzf-tab:*' switch-group ',' '.'                        # switch group using `,` and `.`
-
-# Load theme
-zinit light romkatv/powerlevel10k
-
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=239'
-zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}" # Add graphical menu for zsh-completions
-
-# Completion; use cache if updated within 24h
-# Using zinit's compinit optimization
-# https://github.com/zdharma-continuum/zinit?tab=readme-ov-file#calling-compinit-without-turbo-mode
-autoload -Uz compinit
-compinit
-zinit cdreplay -q
-
-# if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
-#   compinit
-# else
-#   compinit -C
-# fi
+#autoload -U colors && colors
 
 # Customize Prompt
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ -f ${HOME}/.p10k.zsh ]] && source ${HOME}/.p10k.zsh
 #zprof

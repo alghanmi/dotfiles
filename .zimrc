@@ -1,0 +1,31 @@
+##
+## Modules
+##
+zmodule input                                             --use degit  # Applies correct bindkeys for input events.
+zmodule zdharma-continuum/history-search-multi-word       --use degit
+zmodule ohmyzsh/ohmyzsh --root plugins/colored-man-pages  --use degit
+
+##
+## Themes
+##
+zmodule romkatv/powerlevel10k  --use degit  # Theme
+
+##
+## Completions
+##
+if [[ -d /opt/homebrew/share/zsh ]] && [[ $(uname) == Darwin ]] ; then
+  zmodule /opt/homebrew/share/zsh/site-functions --fpath .
+fi
+zmodule zsh-users/zsh-completions --fpath src --use degit
+zmodule completion                --use degit
+
+##
+## Modules
+##
+zmodule Aloxaf/fzf-tab                                    --use degit  # Replace zsh's default completion selection menu with fzf!
+
+##
+## Modules - (Must be initialized last, in-order)
+##
+zmodule zsh-users/zsh-syntax-highlighting  --use degit  # Fish-like syntax highlighting for Zsh.
+zmodule zsh-users/zsh-autosuggestions      --use degit  # Fish-like autosuggestions for Zsh.

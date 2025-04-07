@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Read System Environment Variables
+source ${HOME}/.zshenv
+[ -r "${ZDOTDIR}/.zprofile" ] && source ${ZDOTDIR}/.zprofile
+
+# LS_COLORS
+DIRCOLORS_BIN=dircolors
+LS_COLORS_RC=${HOME}/.shell.d/05-ls-colors.sh
+[ $(uname -s) == "Darwin" ] && DIRCOLORS_BIN=gdircolors
+
+rm -f ${LS_COLORS_RC}
+${DIRCOLORS_BIN} ~/.dir_colors > ${LS_COLORS_RC}

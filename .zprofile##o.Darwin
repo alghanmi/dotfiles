@@ -18,6 +18,10 @@ fpath[1,0]="/opt/homebrew/share/zsh/site-functions";
 [ -z "${MANPATH-}" ] || export MANPATH=":${MANPATH#:}";
 export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
 
+# Use CoreUtils without the `g` prefix
+# See https://formulae.brew.sh/formula/coreutils
+# Warning: Putting non-prefixed coreutils in your path can cause GMP builds to fail.
+#export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
 
 # Homebrew Path
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}"
+export PATH="${HOMEBREW_PREFIX}/bin:${HOMEBREW_PREFIX}/sbin:${PATH}"

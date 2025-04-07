@@ -24,8 +24,12 @@ export LC_ALL=en_US.UTF-8
 
 # ZSH Configuration Home
 export ZDOTDIR=${ZDOTDIR:-$HOME}
-export ZSH_COMPDUMP="${XDG_CACHE_HOME}/zsh/zcompdump"
+export ZSH_COMPDUMP=${XDG_CACHE_HOME}/zsh/zcompdump
 export ZCOMPDUMP_PATH=${ZSH_COMPDUMP}
+
+export ZIM_CONFIG_FILE=${ZDOTDIR}/.zimrc
+export ZIM_HOME=${XDG_CACHE_HOME}/zim
+
 
 # Disable ZSH Shell Sessions (used by MacOS)
 export SHELL_SESSIONS_DISABLE=1
