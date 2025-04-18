@@ -3,3 +3,7 @@ export HOMEBREW_INSTALL_CLEANUP=1
 export HOMEBREW_NO_INSTALL_CLEANUP= 
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_AUTO_UPDATE_SECS=86400
+
+# Tailscale (Configuration used when tailscale is installed from the app store)
+#alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+#export TAILSCALE_BE_CLI=1

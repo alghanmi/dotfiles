@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+# Read System Environment Variables
+source ${HOME}/.zshenv
+[ -r "${ZDOTDIR}/.zprofile" ] && source ${ZDOTDIR}/.zprofile
+
+# FZF Configuration
+$(brew --prefix fzf)/install --xdg --key-bindings --completion --no-update-rc --no-bash --no-fish

@@ -61,6 +61,10 @@ export GPG_TTY=$(tty)
 ## ZSH Frameworks and Modules
 ##
 
+# Add custom fpath
+fpath+=(${XDG_DATA_HOME}/zsh-completions)
+
+
 # Load ZIM:FW
 zstyle ':zim:zmodule' use 'degit'
 zstyle ':zim' 'disable-version-check' 'false'
@@ -69,7 +73,6 @@ zstyle ':zim' 'disable-version-check' 'false'
 # FZF
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
 
-# Aloxaf/fzf-tab module option
 zstyle ':completion:*:descriptions' format '[%d]'                    # set descriptions format to enable group support
 zstyle ':completion:*:git-checkout:*' sort false                     # disable sort when completing `git checkout`
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}                # set list-colors to enable filename colorizing
@@ -84,6 +87,9 @@ zstyle ':fzf-tab:*' popup-min-size 50 8                              # adjust po
 zstyle ':plugin:history-search-multi-word' reset-prompt-protect 1  # Enable context-based search
 zstyle ':plugin:history-search-multi-word' clear-on-cancel 'yes'   # Whether pressing Ctrl-C or ESC should clear entered query
 
+# Alias Autocompletion
+compdef _yadm wyadm
+
 export SDKMAN_DIR=${HOMEBREW_PREFIX}/opt/sdkman-cli/libexec
 [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 
@@ -91,4 +97,6 @@ export SDKMAN_DIR=${HOMEBREW_PREFIX}/opt/sdkman-cli/libexec
 
 # Customize Prompt
 [[ -f ${HOME}/.p10k.zsh ]] && source ${HOME}/.p10k.zsh
+
 #zprof
+

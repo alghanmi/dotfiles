@@ -44,7 +44,3 @@ if command -v tmux >/dev/null 2>&1; then
     ${TMUX_PLUGINS_HOME}/tpm/bin/update_plugins all
   fi
 fi
-
-
-# FZF Configuration
-$(brew --prefix fzf)/install --xdg --key-bindings --completion --no-update-rc --no-bash --no-fish

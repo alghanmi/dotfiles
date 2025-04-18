@@ -6,10 +6,15 @@ set -e
 source ${HOME}/.zshenv
 [ -r "${ZDOTDIR}/.zprofile" ] && source ${ZDOTDIR}/.zprofile
 
+# Local ZSH Completions
+mkdir -p ${XDG_DATA_HOME}/zsh-completions
+
 # LS_COLORS
 DIRCOLORS_BIN=dircolors
 LS_COLORS_RC=${HOME}/.shell.d/05-ls-colors.sh
 [ $(uname -s) == "Darwin" ] && DIRCOLORS_BIN=gdircolors
 
-rm -f ${LS_COLORS_RC}
-${DIRCOLORS_BIN} ~/.dir_colors > ${LS_COLORS_RC}
+if command -v ${DIRCOLORS_BIN} >/dev/null 2>&1; then
+  rm -f ${LS_COLORS_RC}
+  ${DIRCOLORS_BIN} ~/.dir_colors > ${LS_COLORS_RC}
+fi

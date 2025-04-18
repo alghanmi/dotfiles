@@ -13,9 +13,12 @@ zmodule romkatv/powerlevel10k  --use degit  # Theme
 ##
 ## Completions
 ##
-if [[ -d /opt/homebrew/share/zsh ]] && [[ $(uname) == Darwin ]] ; then
-  zmodule /opt/homebrew/share/zsh/site-functions --fpath .
-fi
+# if [[ -d /opt/homebrew/share/zsh ]] && [[ $(uname) == Darwin ]] ; then
+#   zmodule /opt/homebrew/share/zsh/site-functions --fpath .
+# fi
+# if [[ -d ~/.local/share/zsh-completions ]] ; then
+#   zmodule ~/.local/share/zsh-completions --fpath .
+# fi
 zmodule zsh-users/zsh-completions --fpath src --use degit
 zmodule completion                --use degit
 
