@@ -11,18 +11,6 @@
 ##
 
 ##
-## Defaults - Change to suite your needs
-##
-_dock_apps=(
-	"/Applications/Microsoft Outlook.app"
-	"/Applications/Slack.app"
-	"/Applications/Google Chrome.app"
-	"/Applications/Firefox.app"
-	"/Applications/iTerm.app"
-	"/Applications/IntelliJ IDEA.app"
-)
-
-##
 ## Backup Configuration
 ##
 _backup_path=${HOME}/.config/macos/plist_backup/$(date '+%Y%m%d%H%M')
@@ -30,21 +18,21 @@ mkdir -p ${_backup_path}
 
 # List of pLists updated in this script
 _plist=(
-    /Library/Preferences/com.apple.windowserver
-    com.apple.ActivityMonitor
-    com.apple.commerce
-    com.apple.desktopservices
-    com.apple.DiskUtility
-    com.apple.dock
-    com.apple.driver.AppleBluetoothMultitouch.trackpad
-    com.apple.finder
-    com.apple.screencapture
-    com.apple.SoftwareUpdate
-    com.apple.swipescrolldirection
-    com.apple.systemuiserver
-    com.microsoft.Outlook
-    NSGlobalDomain
-    NSRequiresAquaSystemAppearance
+  /Library/Preferences/com.apple.windowserver
+  com.apple.ActivityMonitor
+  com.apple.commerce
+  com.apple.desktopservices
+  com.apple.DiskUtility
+  com.apple.dock
+  com.apple.driver.AppleBluetoothMultitouch.trackpad
+  com.apple.finder
+  com.apple.screencapture
+  com.apple.SoftwareUpdate
+  com.apple.swipescrolldirection
+  com.apple.systemuiserver
+  com.microsoft.Outlook
+  NSGlobalDomain
+  NSRequiresAquaSystemAppearance
 )
 
 for _p in "${_plist[@]}"; do
@@ -65,194 +53,94 @@ defaults read > ${_backup_path}/global-settings
 ## Dark Mode
 ##
 
-# Enable global dark mode
-defaults write -g NSRequiresAquaSystemAppearance -bool true
-defaults write 'Apple Global Domain' AppleInterfaceStyle -string Dark
-
-# Rolleback dark mode
-#defaults delete -g NSRequiresAquaSystemAppearance
-
+osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
 
 ##
 ## Regional Settings
 ##
 
 defaults write NSGlobalDomain AppleLanguages -array  "en-US" "ar-US"
-defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
-defaults write NSGlobalDomain AppleMeasurementUnits -string "Inches"
-defaults write NSGlobalDomain AppleTemperatureUnit -string "Fahrenheit"
-defaults write NSGlobalDomain AppleMetricUnits -bool false
-
-##
-##  Screen Capture
-##
-
-mkdir -p ${HOME}/Documents/Screenshots
-
-defaults write com.apple.screencapture location -string "${HOME}/Documents/Screenshots"
-defaults write com.apple.screencapture type -string "png"
-defaults write com.apple.screencapture disable-shadow -bool true
-
-
-##
-## Keyboard, Mouse and Trackpad
-##
-
-# Trackpad: enable tap to click for this user and for the login screen
-defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
-
-# Disable natural scrolling
-# defaults write -g com.apple.swipescrolldirection -boolean false
-
-# Disable press-and-hold for keys in favor of key repeat
-defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-
-# Keyboard: set keyboard repeat rate
-# UI Values
-#    KeyRepeat:        120, 90, 60, 30, 12,  6, 2
-#    InitialKeyRepeat: 120, 94, 68, 35, 25, 15
-defaults write NSGlobalDomain KeyRepeat -int 6
-defaults write NSGlobalDomain InitialKeyRepeat -int 25
-
-# Keyboard: Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
-defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
+defaults write NSGlobalDomain AppleLocale -string "en_US"
 
 ##
 ## Menu Items
 ##
 
-# Reset menu array
-defaults write com.apple.systemuiserver menuExtras -array
-
-# Disable Siri menu bar item
-defaults write com.apple.systemuiserver "NSStatusItem Visible Siri" -bool false
-
-# Enable Network menu bar item
-defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.airport' -bool true
-defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/AirPort.menu'
-
-# Disable Airplay menu bar item
-defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.airplay' -bool false
-#defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Displays.menu'
-
-# Enable Battery menu bar item
-defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.battery' -bool true
-defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Battery.menu'
-
-# Enable Bluetooth menu bar item
-defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.bluetooth' -bool true
-defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Bluetooth.menu'
-
-# Enable Clock menu bar item
-defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.clock' -bool true
-defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Clock.menu'
-
-# Enable Volume menu bar item
-defaults write com.apple.systemuiserver 'NSStatusItem Visible com.apple.menuextra.volume' -bool true
-defaults write com.apple.systemuiserver menuExtras -array-add '/System/Library/CoreServices/Menu Extras/Volume.menu'
+# TBD
 
 
-##
-## Finder
-##
+# ##
+# ## Finder
+# ##
 
-# Finder: disable window animations and Get Info animations
-defaults write com.apple.finder DisableAllAnimations -bool true
+# # Finder: disable window animations and Get Info animations
+# defaults write com.apple.finder DisableAllAnimations -bool true
 
-# Show icons for hard drives, servers, and removable media on the desktop
-defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+# # Show icons for hard drives, servers, and removable media on the desktop
+# defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+# defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+# defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+# defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
-# Set the user directory as the default location for new Finder windows
-# For other paths, use `PfLo` and `file:///full/path/here/`
-defaults write com.apple.finder NewWindowTarget -string "PfLo"
-defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
+# # Set the user directory as the default location for new Finder windows
+# # For other paths, use `PfLo` and `file:///full/path/here/`
+# defaults write com.apple.finder NewWindowTarget -string "PfLo"
+# defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
-# Finder: show all filename extensions
-defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# # Finder: show all filename extensions
+# defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-# Finder: show status bar
-defaults write com.apple.finder ShowStatusBar -bool true
+# # Finder: show status bar
+# defaults write com.apple.finder ShowStatusBar -bool true
 
-# Finder: show path bar
-defaults write com.apple.finder ShowPathbar -bool true
+# # Finder: show path bar
+# defaults write com.apple.finder ShowPathbar -bool true
 
-# Enable text selection in Quick Look/Preview in Finder
-defaults write com.apple.finder QLEnableTextSelection -bool true
+# # Enable text selection in Quick Look/Preview in Finder
+# defaults write com.apple.finder QLEnableTextSelection -bool true
 
-# Display full POSIX path as Finder window title
-#defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+# # Display full POSIX path as Finder window title
+# #defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-# Keep folders on top when sorting by name
-defaults write com.apple.finder _FXSortFoldersFirst -bool true
+# # Keep folders on top when sorting by name
+# defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
-# When performing a search, search the current folder by default
-defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+# # When performing a search, search the current folder by default
+# defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 
-# Disable the warning when changing a file extension
-defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+# # Disable the warning when changing a file extension
+# defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# Enable spring loading for directories
-defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+# # Enable spring loading for directories
+# defaults write NSGlobalDomain com.apple.springing.enabled -bool true
 
-# Remove the spring loading delay for directories
-defaults write NSGlobalDomain com.apple.springing.delay -float 0
+# # Remove the spring loading delay for directories
+# defaults write NSGlobalDomain com.apple.springing.delay -float 0
 
-# Avoid creating .DS_Store files on network or USB volumes
-defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+# # Avoid creating .DS_Store files on network or USB volumes
+# defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+# defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Use list view in all Finder windows by default
-# Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
-defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+# # Use list view in all Finder windows by default
+# # Four-letter codes for the other view modes: `icnv`, `clmv`, `glyv`
+# defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 
-# Show the ~/Library folder
-chflags nohidden ~/Library
+# # Show the ~/Library folder
+# chflags nohidden ~/Library
 
 
 ##
 ## Dock
 ##
 
-# Enable highlight hover effect for the grid view of a stack (Dock)
-defaults write com.apple.dock mouse-over-hilite-stack -bool true
-
-# Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 36
-
-# Don’t animate opening applications from the Dock
-defaults write com.apple.dock launchanim -bool false
-
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
 
-# Automatically hide and show the Dock
+# # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock autohide-delay -float 0
-defaults write com.apple.dock autohide-time-modifier -float 0
 
-# Make Dock icons of hidden applications translucent
-defaults write com.apple.dock showhidden -bool true
-
-# Don’t show recent applications in Dock
-defaults write com.apple.dock show-recents -bool false
-
-# Enable magnification
-defaults write com.apple.dock magnification -bool true
-defaults write com.apple.dock largesize -int 65
-
-# Remove all (default) app icons from the Dock
-defaults write com.apple.dock persistent-apps -array
-
-# Setup persistent apps in the Dock
-for _app in "${_dock_apps[@]}"; do
-	defaults write com.apple.dock persistent-apps -array-add "<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>${_app}</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>"
-done
+# Disable magnification
+defaults write com.apple.dock magnification -bool false
 
 ##
 ## Hot corners
@@ -271,6 +159,14 @@ done
 # 12: Notification Center
 # 13: Lock Screen
 
+# Bottom left screen corner → Lock Screen
+defaults write com.apple.dock wvous-bl-corner -int 13
+defaults write com.apple.dock wvous-bl-modifier -int 0
+
+# Bottom left screen corner → Notification Center
+defaults write com.apple.dock wvous-br-corner -int 12
+defaults write com.apple.dock wvous-br-modifier -int 0
+
 # Top left screen corner → Mission Control
 defaults write com.apple.dock wvous-tl-corner -int 2
 defaults write com.apple.dock wvous-tl-modifier -int 0
@@ -279,77 +175,23 @@ defaults write com.apple.dock wvous-tl-modifier -int 0
 defaults write com.apple.dock wvous-tr-corner -int 4
 defaults write com.apple.dock wvous-tr-modifier -int 0
 
-# Bottom left screen corner → Start screen saver
-defaults write com.apple.dock wvous-bl-corner -int 5
-defaults write com.apple.dock wvous-bl-modifier -int 0
-
-
-##
-## Misc Tweaks
-##
-
-# Always show scrollbars
-# Possible values: `WhenScrolling`, `Automatic` and `Always`
-defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
-
-# Expand print panel by default
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
-defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
-
-# Enabling subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleFontSmoothing -int 1
-
-# Enabling HiDPI display modes (requires restart)
-if ! command defaults read /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled >/dev/null 2>&1; then
-    sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
-fi
-
-# Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
-
-# Stop iTunes from responding to the keyboard media keys
-launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
-
-##
-## Auto-Correct
-##
-
-# Disable automatic capitalization
-#defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
-
-# Disable smart dashes
-#defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
-
-# Disable automatic period substitution
-#defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-
-# Disable smart quotes
-defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
-# Disable auto-correct
-#defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-
-
-#####
-##### Application Settings
-#####
 
 ##
 ## Activity Monitor
 ##
 
-# Show the main window when launching Activity Monitor
-defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
+# # Show the main window when launching Activity Monitor
+# defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
 
-# Visualize CPU usage in the Activity Monitor Dock icon
-defaults write com.apple.ActivityMonitor IconType -int 5
+# # Visualize CPU usage in the Activity Monitor Dock icon
+# defaults write com.apple.ActivityMonitor IconType -int 5
 
-# Show all processes in Activity Monitor
-defaults write com.apple.ActivityMonitor ShowCategory -int 0
+# # Show all processes in Activity Monitor
+# defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
-# Sort Activity Monitor results by CPU usage
-defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
-defaults write com.apple.ActivityMonitor SortDirection -int 0
+# # Sort Activity Monitor results by CPU usage
+# defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+# defaults write com.apple.ActivityMonitor SortDirection -int 0
 
 
 ##
@@ -357,19 +199,19 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 ##
 
 # Enable the automatic update check
-defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+# defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
 # Check for software updates daily, not just once per week
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+# defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Download newly available updates in background
-defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+# defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 
 # Install System data files & security updates
-defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
+# defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 1
 
 # Turn on app auto-update
-defaults write com.apple.commerce AutoUpdate -bool true
+# defaults write com.apple.commerce AutoUpdate -bool true
 
 
 ##
@@ -377,47 +219,10 @@ defaults write com.apple.commerce AutoUpdate -bool true
 ##
 
 # Enable the debug menu in Disk Utility
-defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
-defaults write com.apple.DiskUtility advanced-image-options -bool true
-
-
-##
-## Google Chrome
-##
-
-# Disable the all too sensitive backswipe on trackpads
-defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
-
-# Disable the all too sensitive backswipe on Magic Mouse
-defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
-
-# Use the system-native print preview dialog
-defaults write com.google.Chrome DisablePrintPreview -bool true
-
-# Expand the print dialog by default
-defaults write com.google.Chrome PMPrintingExpandedStateForPrint2 -bool true
+# defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
+# defaults write com.apple.DiskUtility advanced-image-options -bool true
 
 ##
-## Outlook
+## Backup Settings After Running the Script
 ##
-
-# Show week numbers
-defaults write com.microsoft.Outlook OLCalendarViewShowWeekNumberInHeaders 1
-
-# Set mark as read with time-delay
-defaults write com.microsoft.Outlook MarkItemsAsReadPreferencesKey 0
-
-# Set swipe actions
-defaults write com.microsoft.Outlook MessageListLeadingSwipeAction 9
-
-# Set second timezone as Dublin, Ireland
-defaults write com.microsoft.Outlook CalendarGridSecondTimeZoneID 8
-defaults write com.microsoft.Outlook CalendarGridSecondTimeZoneLabel DUB
-defaults write com.microsoft.Outlook CalendarGridShowSecondTimeZone 1
-defaults write com.microsoft.Outlook CalendarGridViewTimeScale 8
-
-
-###
-### Backup Settings After Running the Script
-###
 defaults read > ${_backup_path}/global-settings-after

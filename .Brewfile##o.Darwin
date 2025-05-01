@@ -1,6 +1,7 @@
 # Shell essentials
 brew "coreutils"
 brew "curl"
+brew "diffutils"
 brew "eza"
 brew "fzf"
 brew "git-lfs"
