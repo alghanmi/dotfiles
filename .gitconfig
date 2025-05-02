@@ -7,8 +7,17 @@
   delete-merged = !git branch --merged | egrep -v '(^\\*|master|dev)' | xargs git branch -d
   delete-gone = ! "git fetch -p && git for-each-ref --format '%(refname:short) %(upstream:track)' | awk '$2 == \"[gone]\" {print $1}' | xargs -r git branch --delete --force"
 
+[branch]
+  sort = -committerdate
+
 [color]
   ui = auto
+
+[column]
+  ui = auto
+
+[commit]
+  verbose = true
 
 [core]
   excludesfile = ~/.gitignore-global
@@ -16,6 +25,20 @@
 
 [credential]
   helper =
+
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
+
+[fetch]
+  prune = true
+  pruneTags = true
+  all = true
+
+[help]
+  autocorrect = prompt
 
 [includeIf "gitdir:/Users"]
   path = ~/.gitconfig.d/macos.gitconfig
@@ -29,12 +52,32 @@
 [include]
   path = ~/.gitconfig.d/work.gitconfig
 
+[include]
+  path = ~/.gitconfig.d/global-user.gitconfig
+
 [init]
   defaultBranch = main
 
 [merge]
   tool = vimdiff
-  conflictstyle = diff3
+  conflictstyle = zdiff3
 
 [pull]
   rebase = false
+
+[push]
+  default = simple
+  autoSetupRemote = true
+  followTags = true
+
+[rebase]
+  autoSquash = true
+  autoStash = true
+  updateRefs = true
+
+[rerere]
+  enabled = true
+  autoupdate = true
+
+[tag]
+  sort = version:refname
