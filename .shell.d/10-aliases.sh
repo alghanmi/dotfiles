@@ -20,7 +20,7 @@ if [ "$(uname -s)" = "Darwin" ]; then
   alias dircolors='gdircolors'
 
   # Check open ports
-  alias op='lsof -i | grep -E "(LISTEN|ESTABLISHED)"'
+  alias open-ports='lsof -i | grep -E "(LISTEN|ESTABLISHED)"'
 else
   # ls colored
   alias ls='ls --color=auto'
