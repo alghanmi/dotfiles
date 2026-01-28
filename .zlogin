@@ -7,17 +7,30 @@ if [[ -z ${SSH_CONNECTION} ]]; then
   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
 
-# # ZSH zcompile for speed-up
-# {
-#   # zcompile the completion cache for siginificant speedup
-#   zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
-#   if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
-#     zcompile "$zcompdump"
-#   fi
-  
-#   # zcompile .zshrc
-#   zshrc="${ZDOTDIR:-$HOME}/.zshrc"
-#   if [[ -s "$zshrc" && (! -s "${zshrc}.zwc" || "$zshrc" -nt "${zshrc}.zwc") ]]; then
-#     zcompile "$zshrc"
-#   fi
-# } &!
+# ZSH zcompile for speed-up
+{
+  # Function to compile a file if it's newer than its compiled version
+  zcompile_if_needed() {
+    local file="$1"
+    if [[ -s "$file" && (! -s "${file}.zwc" || "$file" -nt "${file}.zwc") ]]; then
+      zcompile "$file"
+    fi
+  }
+
+  # Compile main zsh configuration files
+  zcompile_if_needed "${ZDOTDIR:-$HOME}/.zshenv"
+  zcompile_if_needed "${ZDOTDIR:-$HOME}/.zshrc"
+  zcompile_if_needed "${ZDOTDIR:-$HOME}/.zlogin"
+  zcompile_if_needed "${ZDOTDIR:-$HOME}/.zimrc"
+
+  # Compile completion cache (significant speedup)
+  zcompile_if_needed "${ZDOTDIR:-$HOME}/.zcompdump"
+
+  # Compile p10k configuration
+  zcompile_if_needed "${HOME}/.p10k.zsh"
+
+  # Compile all shell.d configuration files
+  for file in ${HOME}/.shell.d/*.sh(N); do
+    zcompile_if_needed "$file"
+  done
+} &!

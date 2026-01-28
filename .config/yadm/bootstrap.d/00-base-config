@@ -11,5 +11,9 @@ mkdir -p ${XDG_CACHE_HOME} ${XDG_CONFIG_HOME} ${XDG_DATA_HOME} ${XDG_STATE_HOME}
 mkdir -p $HOME/.local/bin
 
 # Create SSH configuration directory
-mkdir -p  "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
-chmod 700 "$HOME/.ssh" "$HOME/.ssh/config.d" "$HOME/.ssh/sockets"
+mkdir -p  "${HOME}/.ssh" "${HOME}/.ssh/config.d" "${HOME}/.ssh/sockets"
+chmod 700 "${HOME}/.ssh" "${HOME}/.ssh/config.d" "${HOME}/.ssh/sockets"
+
+# Create netrc file
+[ ! -f ${HOME}/.netrc ] && touch ${HOME}/.netrc
+chmod 600 ${HOME}/.netrc

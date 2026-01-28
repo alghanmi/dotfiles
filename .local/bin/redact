@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# 1. Define your keys in this list (easier to read and edit)
+KEYS=(
+  "access_key_id"
+  "access_token"
+  "access-key-id"
+  "aws_access_key_id"
+  "aws_secret_access_key"
+  "aws_session_token"
+  "client_secret"
+  "google_application_credentials"
+  "id_token"
+  "private_key_data"
+  "refresh_token"
+  "secret_key"
+  "secret-key"
+)
+
+# 2. Join the array elements with a pipe separator (|) for the Regex
+# The resulting string looks like: "aws_access_key_id|aws_secret_access_key|..."
+JOINED_KEYS=$(IFS='|'; echo "${KEYS[*]}")
+
+# 3. Run Perl (Cross-platform for Mac/Linux)
+# -pe : Loop through input line by line (-p) and execute (-e)
+# The Regex logic:
+#   (\"?($JOINED_KEYS)\"?[[:space:]]*[:=][[:space:]]*\"?)  : Capture Key + Separator (Group 1)
+#   ([^[:space:]\",\}]+)                                   : Capture Value (Group 2)
+#   (.*)                                                   : Capture Tail/End (Group 3)
+perl -pe "s/(\"?($JOINED_KEYS)\"?[[:space:]]*[:=][[:space:]]*\"?)([^[:space:]\",\}]+)(.*)/\$1<REDACTED>\$4/ig"
