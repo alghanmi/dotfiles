@@ -40,6 +40,9 @@
 [help]
   autocorrect = prompt
 
+[include]
+  path = ~/.gitconfig.d/global-user.gitconfig
+
 [includeIf "gitdir:/Users"]
   path = ~/.gitconfig.d/macos.gitconfig
 
@@ -51,9 +54,6 @@
 
 [include]
   path = ~/.gitconfig.d/work.gitconfig
-
-[include]
-  path = ~/.gitconfig.d/global-user.gitconfig
 
 [init]
   defaultBranch = main
