@@ -24,7 +24,7 @@ fi
   zcompile_if_needed "${ZDOTDIR:-$HOME}/.zimrc"
 
   # Compile completion cache (significant speedup)
-  zcompile_if_needed "${ZDOTDIR:-$HOME}/.zcompdump"
+  zcompile_if_needed "${ZSH_COMPDUMP}"
 
   # Compile p10k configuration
   zcompile_if_needed "${HOME}/.p10k.zsh"
