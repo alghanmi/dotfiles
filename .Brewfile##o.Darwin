@@ -37,11 +37,12 @@ brew "pre-commit"
 brew "semtag"
 
 # Infra Tools
-brew "ansible"
 brew "ansible-lint"
+brew "ansible"
 brew "argocd"
 brew "awscli"
 brew "checkov"
+brew "crane"
 brew "helm"
 brew "ipcalc"
 brew "kind"
@@ -77,4 +78,3 @@ cask "obsidian"
 cask "todoist-app"
 cask "visual-studio-code"
 cask "zoom"
-
