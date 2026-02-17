@@ -6,6 +6,9 @@ set -e
 source ${HOME}/.zshenv
 [ -r "${ZDOTDIR}/.zprofile" ] && source ${ZDOTDIR}/.zprofile
 
+# Invalidate compiled shell scripts cache
+rm -f ~/.*.zwc ~/.shell.d/*.zwc
+
 #ZIM:FW Configuration
 if [[ ! -r "${ZIM_HOME}/zimfw.zsh" ]]; then 
   curl --fail --location --create-dirs --silent --output ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh

@@ -6,8 +6,9 @@ set -e
 source ${HOME}/.zshenv
 [ -r "${ZDOTDIR}/.zprofile" ] && source ${ZDOTDIR}/.zprofile
 
-# Local ZSH Completions
-mkdir -p ${XDG_DATA_HOME}/zsh-completions
+# ZSH Directories
+[ ! -d "${XDG_DATA_HOME}/zsh-completions" ] || mkdir -p ${XDG_DATA_HOME}/zsh-completions
+[ ! -d "$(dirname ${ZSH_COMPDUMP})" ] || mkdir -p $(dirname ${ZSH_COMPDUMP})
 
 # LS_COLORS
 DIRCOLORS_BIN=dircolors
