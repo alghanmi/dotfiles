@@ -21,3 +21,4 @@ if command brew --prefix sdkman-cli >/dev/null 2>&1; then
   [ ! -r "${SDKMAN_DIR}/etc/config.orig" ] && cp ${SDKMAN_DIR}/etc/config ${SDKMAN_DIR}/etc/config.orig
   sed 's/^sdkman_auto_complete=true/sdkman_auto_complete=false/' ${SDKMAN_DIR}/etc/config.orig > ${SDKMAN_DIR}/etc/config
 fi
+
