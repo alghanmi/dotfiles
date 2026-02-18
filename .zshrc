@@ -90,9 +90,6 @@ zstyle ':plugin:history-search-multi-word' clear-on-cancel 'yes'   # Whether pre
 # Alias Autocompletion
 compdef _yadm wyadm
 
-export SDKMAN_DIR=${HOMEBREW_PREFIX}/opt/sdkman-cli/libexec
-[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
-
 #autoload -U colors && colors
 
 # Customize Prompt

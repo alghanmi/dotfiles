@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+STATIC_CONFIG_RC=${HOME}/.shell.d/06-static-config.sh
+
+# Read System Environment Variables
+source ${HOME}/.zshenv
+[ -r "${ZDOTDIR}/.zprofile" ] && source ${ZDOTDIR}/.zprofile
+
+# Remove stale static configuration
+rm -f ${STATIC_CONFIG_RC}
+touch ${STATIC_CONFIG_RC}
+
+# Configure Path for SDKMAN tools
+if command brew --prefix sdkman-cli >/dev/null 2>&1; then 
+  echo "export SDKMAN_DIR=\${HOMEBREW_PREFIX}/opt/sdkman-cli/libexec" >> ${STATIC_CONFIG_RC}
+  echo "[[ -s \"\${SDKMAN_DIR}/bin/sdkman-init.sh\" ]] source \"\${SDKMAN_DIR}/bin/sdkman-init.sh\"" >> ${STATIC_CONFIG_RC}
+fi
