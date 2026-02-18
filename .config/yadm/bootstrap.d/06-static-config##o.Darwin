@@ -15,5 +15,9 @@ touch ${STATIC_CONFIG_RC}
 # Configure Path for SDKMAN tools
 if command brew --prefix sdkman-cli >/dev/null 2>&1; then 
   echo "export SDKMAN_DIR=\${HOMEBREW_PREFIX}/opt/sdkman-cli/libexec" >> ${STATIC_CONFIG_RC}
-  echo "[[ -s \"\${SDKMAN_DIR}/bin/sdkman-init.sh\" ]] source \"\${SDKMAN_DIR}/bin/sdkman-init.sh\"" >> ${STATIC_CONFIG_RC}
+  echo "[[ -s \"\${SDKMAN_DIR}/bin/sdkman-init.sh\" ]] && source \"\${SDKMAN_DIR}/bin/sdkman-init.sh\"" >> ${STATIC_CONFIG_RC}
+
+  export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+  [ ! -r "${SDKMAN_DIR}/etc/config.orig" ] && cp ${SDKMAN_DIR}/etc/config ${SDKMAN_DIR}/etc/config.orig
+  sed 's/^sdkman_auto_complete=true/sdkman_auto_complete=false/' ${SDKMAN_DIR}/etc/config.orig > ${SDKMAN_DIR}/etc/config
 fi
