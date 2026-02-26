@@ -1,13 +1,6 @@
 #zmodload zsh/zprof
 
 ##
-## Powerlevel10k instant prompt.
-##
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-##
 ## Shell Configuration Files
 ##
 for filename in $(find ~/.shell.d -name '*.sh' | sort); do source $filename; done
@@ -93,7 +86,7 @@ compdef _yadm wyadm
 #autoload -U colors && colors
 
 # Customize Prompt
-[[ -f ${HOME}/.p10k.zsh ]] && source ${HOME}/.p10k.zsh
+(( $+commands[starship] )) && eval "$(starship init zsh)"
 
 #zprof
 

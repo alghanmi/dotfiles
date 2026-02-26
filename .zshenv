@@ -29,6 +29,9 @@ export ZSH_COMPDUMP=${XDG_CACHE_HOME}/zsh/zcompdump
 export ZIM_CONFIG_FILE=${ZDOTDIR}/.zimrc
 export ZIM_HOME=${XDG_CACHE_HOME}/zim
 
+# ZSH Shell Prompt
+export STARSHIP_CONFIG=${XDG_CONFIG_HOME}/starship/starship.toml
+export STARSHIP_CACHE=${XDG_CACHE_HOME}/starship
 
 # Disable ZSH Shell Sessions (used by MacOS)
 export SHELL_SESSIONS_DISABLE=1

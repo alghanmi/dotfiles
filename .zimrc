@@ -6,11 +6,6 @@ zmodule zdharma-continuum/history-search-multi-word       --use degit
 zmodule ohmyzsh/ohmyzsh --root plugins/colored-man-pages  --use degit
 
 ##
-## Themes
-##
-zmodule romkatv/powerlevel10k  --use degit  # Theme
-
-##
 ## Completions
 ##
 # if [[ -d /opt/homebrew/share/zsh ]] && [[ $(uname) == Darwin ]] ; then
