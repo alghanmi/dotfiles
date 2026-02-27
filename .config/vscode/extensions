@@ -1,9 +1,9 @@
 AmazonWebServices.aws-toolkit-vscode
 Cardinal90.multi-cursor-case-preserve
-Codeium.codeium
 EditorConfig.EditorConfig
 HashiCorp.HCL
 HashiCorp.terraform
+anthropic.claude-code
 anthropic.claude-code
 christian-kohler.path-intellisense
 dbaeumer.vscode-eslint
@@ -21,7 +21,9 @@ oderwat.indent-rainbow
 redhat.ansible
 redhat.vscode-yaml
 shd101wyy.markdown-preview-enhanced
+tamasfe.even-better-toml
 usernamehw.errorlens
 vscjava.vscode-java-pack
 wayou.vscode-todo-highlight
 yzhang.markdown-all-in-one
+
