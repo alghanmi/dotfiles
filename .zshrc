@@ -80,6 +80,9 @@ zstyle ':fzf-tab:*' popup-min-size 50 8                              # adjust po
 zstyle ':plugin:history-search-multi-word' reset-prompt-protect 1  # Enable context-based search
 zstyle ':plugin:history-search-multi-word' clear-on-cancel 'yes'   # Whether pressing Ctrl-C or ESC should clear entered query
 
+# Fix multiline prompt duplication during tab completion (affects fzf-tab outside tmux)
+unsetopt ALWAYS_LAST_PROMPT
+
 # Alias Autocompletion
 compdef _yadm wyadm
 

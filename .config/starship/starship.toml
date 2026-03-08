@@ -22,7 +22,6 @@ $directory\
 $git_branch\
 $git_commit\
 $git_state\
-$git_metrics\
 $git_status\
 $direnv\
 $env_var\
@@ -77,6 +76,7 @@ renamed = '[»\($count\)](bold green_bright dimmed) '
 deleted = '[-\($count\)](bold red_bright dimmed) '
 staged = '[+\($count\)](bold green_bright dimmed) '
 stashed = '[\$\($count\)](bold yellow_bright dimmed) '
+typechanged = '[T\($count\)](bold yellow_bright dimmed) '
 
 ahead = '| ↑\($count\) '
 behind = '| ↓\($count\) '
@@ -217,9 +217,11 @@ magenta_bright = '#BE9DB8'
 magenta_dim = '#A97EA1'
 
 
+## ------------------------------
+## Additional Modules
+## ------------------------------
+[aws]
+format = '[󰸏 $profile(\($region\))](bold orange_bright) '
 
-#[aws]
-#symbol = " "
-#
-#[gcloud]
-#symbol = " "
+[gcloud]
+format = '[󱇶 $project(\($region\))](bold blue1) '
